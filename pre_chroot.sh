@@ -5,11 +5,11 @@ setfont ter-v32n
 
 # Get Boot Partition
 echo "Boot Partition (sdaX):"
-read BOOT_SPART
-if [[ $BOOT_SPART  =~ "sda" ]]
+read BOOT_PART
+if [[ $BOOT_PART  =~ "sda" ]]
 then
     echo "Valid boot partition."
-    echo $BOOT_SPART > boot_spart.txt
+    echo $BOOT_PART > boot_part.txt
 else
     echo "Invalid input."
     exit
@@ -17,8 +17,8 @@ fi
 
 # Get Root Partition
 echo "Root Partition (sdaX):"
-read ROOT_SPART
-if [[ $ROOT_SPART =~ "sda" ]]
+read ROOT_PART
+if [[ $ROOT_PART =~ "sda" ]]
 then
     echo "Valid root partition."
 else
@@ -27,11 +27,9 @@ else
 fi
 
 # Format Partitions
-BOOT_PART=/dev/"$BOOT_SPART"
-ROOT_PART=/dev/"$ROOT_SPART"
-mkfs.fat -F32 "$BOOT_PART"
-mkfs.ext4 "$ROOT_PART"
-mount "$ROOT_PART" /mnt
+mkfs.fat -F32 /dev/"${BOOT_PART}"
+mkfs.ext4 /dev/"${ROOT_PART}"
+mount /dev"${ROOT_PART}" /mnt
 
 # Install System
 pacstrap /mnt base linux linux-firmware
