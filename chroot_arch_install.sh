@@ -25,7 +25,6 @@ echo "::1        localhost" >> /etc/hosts
 echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
 # Boot Settings
-pacman -Syu
 pacman -S --noconfirm grub efibootmgr mtools os-prober dosfstools
 mkdir /boot/EFI
 
