@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set Font (bigger text)
+setfont ter-v32n
+
 # Get Boot Partition
 echo "Boot Partition (sdaX):"
 read BOOT_SPART
