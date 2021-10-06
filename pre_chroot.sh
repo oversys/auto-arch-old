@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Update the System Clock
+timedatectl set-ntp true
+
 # Set Font (bigger text)
 setfont ter-v32n
 
