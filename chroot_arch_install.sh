@@ -32,11 +32,12 @@ mkdir /boot/EFI
 # Read Selected Boot Partition
 while IFS= read -r line
 do
-    BOOT_PART=$line
-done < boot_part.txt
+    BOOT_SPART=$line
+done < boot_spart.txt
+BOOT_PART=/dev/"$BOOT_SPART"
 
 # Install GRUB
-mount $BOOT_PART /boot/EFI
+mount "$BOOT_PART" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -54,8 +55,11 @@ echo "Set password for $USERNAME:"
 passwd $USERNAME
 
 # Configure Sudo
-pacman -S sudo
+pacman -S --noconfirm sudo
 echo "$USERNAME  ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+# Additional necessary packages
+pacman -S --noconfirm --needed base-devel
 
 # Done
 echo "Basic installation complete. Install additional packages, desktop environments and/or window managers and configure network."
