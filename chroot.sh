@@ -31,12 +31,11 @@ mkdir /boot/EFI
 # Read Selected Boot Partition
 while IFS= read -r line
 do
-    BOOT_SPART=$line
-done < boot_spart.txt
-BOOT_PART=/dev/"$BOOT_SPART"
+    BOOT_PART=$line
+done < boot_part.txt
 
 # Install GRUB
-mount "$BOOT_PART" /boot/EFI
+mount /dev/"${BOOT_PART}" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
