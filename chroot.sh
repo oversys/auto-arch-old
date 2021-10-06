@@ -36,7 +36,7 @@ done < boot_part.txt
 
 # Install GRUB
 mount /dev/"${BOOT_PART}" /boot/EFI
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Adding a user
