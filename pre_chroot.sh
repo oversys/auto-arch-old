@@ -9,9 +9,9 @@ setfont ter-v32n
 echo -e "\e[92m\e[1mChanged Font."
 
 # Get Boot Partition
-echo "Boot Partition (/dev/sdaX):"
+echo "Boot Partition (sdaX):"
 read BOOT_PART
-if [[ $BOOT_PART  =~ "/dev/sda" ]]
+if [[ $BOOT_PART  =~ "sda" ]]
 then
     echo -e "\e[92m\e[1mValid boot partition."
     echo $BOOT_PART > boot_part.txt
@@ -21,9 +21,9 @@ else
 fi
 
 # Get Root Partition
-echo "Root Partition (/dev/sdaX):"
+echo "Root Partition (sdaX):"
 read ROOT_PART
-if [[ $ROOT_PART =~ "/dev/sda" ]]
+if [[ $ROOT_PART =~ "sda" ]]
 then
     echo -e "\e[92m\e[1mValid root partition."
 else
@@ -32,11 +32,11 @@ else
 fi
 
 # Format Partitions
-mkfs.fat -F32 $BOOT_PART
+mkfs.fat -F32 /dev/$BOOT_PART
 echo -e "\e[92m\e[1mFormatted Boot Partition"
-mkfs.ext4 $ROOT_PART
+mkfs.ext4 /dev/$ROOT_PART
 echo -e "\e[92m\e[1mFormatted Root Partition"
-mount $ROOT_PART /mnt
+mount /dev/$ROOT_PART /mnt
 echo -e "\e[92m\e[1mMounted \"$ROOT_PART /mnt\"."
 
 # Install System
