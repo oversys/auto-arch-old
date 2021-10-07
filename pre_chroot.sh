@@ -40,5 +40,9 @@ pacstrap /mnt base linux linux-firmware
 # Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# Move Boot Partition Name
+mv boot_part.txt /mnt
+
 # Part One Done
 echo "Pre-Chroot installation complete."
+rm $0
