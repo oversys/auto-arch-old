@@ -2,19 +2,21 @@
 
 # Update the System Clock
 timedatectl set-ntp true
+echo -e "\e[92m\e[1mUpdated the System Clock."
 
 # Set Font (bigger text)
 setfont ter-v32n
+echo -e "\e[92m\e[1mChanged Font."
 
 # Get Boot Partition
 echo "Boot Partition (/dev/sdaX):"
 read BOOT_PART
 if [[ $BOOT_PART  =~ "/dev/sda" ]]
 then
-    echo "Valid boot partition."
+    echo -e "\e[92m\e[1mValid boot partition."
     echo $BOOT_PART > boot_part.txt
 else
-    echo "Invalid input."
+    echo -e "\e[91m\e[1mInvalid input."
     exit
 fi
 
@@ -23,26 +25,31 @@ echo "Root Partition (/dev/sdaX):"
 read ROOT_PART
 if [[ $ROOT_PART =~ "/dev/sda" ]]
 then
-    echo "Valid root partition."
+    echo -e "\e[92m\e[1mValid root partition."
 else
-    echo "Invalid input."
+    echo -e "\e[91m\e[1mInvalid input."
     exit
 fi
 
 # Format Partitions
 mkfs.fat -F32 $BOOT_PART
+echo -e "\e[92m\e[1mFormatted Boot Partition"
 mkfs.ext4 $ROOT_PART
+echo -e "\e[92m\e[1mFormatted Root Partition"
 mount $ROOT_PART /mnt
+echo -e "\e[92m\e[1mMounted \"$ROOT_PART /mnt\"."
 
 # Install System
 pacstrap /mnt base linux linux-firmware
+echo -e "\e[92m\e[1mInstalled base system."
 
 # Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
+echo -e "\e[92m\e[1mGenerated fstab file."
 
 # Move Boot Partition Name
 mv boot_part.txt /mnt
 
 # Part One Done
-echo "Pre-Chroot installation complete."
+echo -e "\e[92m\e[1mPre-Chroot installation complete."
 rm $0
