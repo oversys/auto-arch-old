@@ -24,7 +24,7 @@ echo "127.0.0.1  localhost" >> /etc/hosts
 echo "::1        localhost" >> /etc/hosts
 echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
-# Boot Settings
+# Get Necessary Boot Packages
 pacman -S --noconfirm grub efibootmgr mtools os-prober dosfstools
 mkdir /boot/EFI
 
@@ -61,3 +61,4 @@ pacman -S --noconfirm --needed base-devel
 
 # Done
 echo "Basic installation complete. Install additional packages, desktop environments and/or window managers and configure network."
+rm boot_part.txt $0
