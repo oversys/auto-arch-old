@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Update the System Clock
 timedatectl set-ntp true
 echo -e "\e[92m\e[1mUpdated the System Clock."
