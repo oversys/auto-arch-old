@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Set the time zone
-echo "Region:"
+echo -e "\e[92m\e[1mRegion:"
 read REGION
-echo "City:"
+echo -e "\e[92m\e[1mCity:"
 read CITY
 
 ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
