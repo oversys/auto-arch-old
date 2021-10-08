@@ -17,6 +17,10 @@ groupadd -r autologin
 gpasswd -a $USERNAME autologin
 systemctl enable lightdm.service
 
+# Apply Gnome Terminal edits
+curl -L https://raw.githubusercontent.com/BetaLost/Arch-Install-Script/main/green_terminal.dconf > /home/$USERNAME/green_terminal.dconf
+dconf load /org/gnome/terminal/legacy/profiles:/:ee86c6a3-d258-4f36-a467-8e029eba6c31/ < /home/$USERNAME/green_terminal.dconf
+
 # Get default awesomewm config
 CONF_DIR="/home/$USERNAME/.config/awesome"
 mkdir -p $CONF_DIR
