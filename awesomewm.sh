@@ -32,9 +32,9 @@ sed -i "s/titlebars_enabled = true/titlebars_enabled = false/g" $CONF_FILE
 sed -i "s/terminal = \"xterm\"/terminal = \"gnome-terminal\"/g" $CONF_FILE
 sed -i "s/awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/-- awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/g" $CONF_FILE
 sed -i "s/{description = \"show main menu\", group = \"awesome\"}),/-- {description = \"show main menu\", group = \"awesome\"}),/g" $CONF_FILE
-sed -i "s/awful.key({ modkey, \"Shift\"   }, \"c\",      function (c) c:kill()                         end),/awful.key({ modkey, }, \"w\",      function (c) c:kill()                         end),/g" $CONF_FILE
-sed -i "s/awful.key({ modkey,           }, \"Return\", function () awful.util.spawn(terminal) end),/awful.key({ modkey,           }, \"t\", function () awful.util.spawn(terminal) end),/g" $CONF_FILE
-sed -i "s/awful.key({ modkey,           }, \"t\",      function (c) c.ontop = not c.ontop            end),/awful.key({ modkey, \"Shift\"}, \"t\",      function (c) c.ontop = not c.ontop            end),/g" $CONF_FILE
+sed -i "s/awful.key({ modkey, \"Shift\"   }, \"c\",      function (c) c:kill()                         end,/awful.key({ modkey, }, \"w\",      function (c) c:kill()                         end,/g" $CONF_FILE
+sed -i "s/awful.key({ modkey,           }, \"Return\", function () awful.util.spawn(terminal) end,/awful.key({ modkey,           }, \"t\", function () awful.util.spawn(terminal) end,/g" $CONF_FILE
+sed -i "s/awful.key({ modkey,           }, \"t\",      function (c) c.ontop = not c.ontop            end,/awful.key({ modkey, \"Shift\"}, \"t\",      function (c) c.ontop = not c.ontop            end,/g" $CONF_FILE
 
 echo -e "\e[92m\e[1mConfigured awesomewm.\e[m"
 rm username.txt $0
