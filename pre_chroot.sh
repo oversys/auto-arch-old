@@ -11,7 +11,7 @@ timedatectl set-ntp true
 echo -e "\e[92m\e[1mUpdated the System Clock.\e[m"
 
 # Get Boot Partition
-echo "\e[91m\e[1mBoot Partition (sdaX):\e[m"
+echo -e "\e[91m\e[1mBoot Partition (sdaX):\e[m"
 read BOOT_PART
 if [[ $BOOT_PART  =~ "sda" ]]
 then
@@ -23,7 +23,7 @@ else
 fi
 
 # Get Root Partition
-echo "\e[91m\e[1mRoot Partition (sdaX):\e[m"
+echo -e "\e[91m\e[1mRoot Partition (sdaX):\e[m"
 read ROOT_PART
 if [[ $ROOT_PART =~ "sda" ]]
 then
