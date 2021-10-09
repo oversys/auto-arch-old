@@ -26,15 +26,27 @@ CONF_FILE=$CONF_DIR/rc.lua
 echo -e "\e[92m\e[1mCopied default awesomewm configuration.\e[m"
 
 # Edit configuration
+
+# Wallpaper
 wget -O /home/$USERNAME/wallpaper.png tinyurl.com/vjh-wallpaper
-printf "\nawful.spawn.with_shell(\"feh --bg-scale /home/$USERNAME/wallpaper.png\")" >> $CONF_FILE
+sed -i "/editor_cmd = terminal .. \" -e \" .. editor/a awful.spawn.with_shell(\"feh --bg-scale /home/$USERNAME/wallpaper.png\")/" >> $CONF_FILE
+
+# Disable titlebar
 sed -i "s/titlebars_enabled = true/titlebars_enabled = false/g" $CONF_FILE
+
+# Change default terminal
 sed -i "s/terminal = \"xterm\"/terminal = \"gnome-terminal\"/g" $CONF_FILE
+
+# Disable/change conflicting hotkeys
 sed -i "s/awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/-- awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/g" $CONF_FILE
 sed -i "s/{description = \"show main menu\", group = \"awesome\"}),/-- {description = \"show main menu\", group = \"awesome\"}),/g" $CONF_FILE
-sed -i "s/awful.key({ modkey, \"Shift\"   }, \"c\",      function (c) c:kill()                         end,/awful.key({ modkey, }, \"w\",      function (c) c:kill()                         end,/g" $CONF_FILE
-sed -i "s/awful.key({ modkey,           }, \"Return\", function () awful.util.spawn(terminal) end,/awful.key({ modkey,           }, \"t\", function () awful.util.spawn(terminal) end,/g" $CONF_FILE
 sed -i "s/awful.key({ modkey,           }, \"t\",      function (c) c.ontop = not c.ontop            end,/awful.key({ modkey, \"Shift\"}, \"t\",      function (c) c.ontop = not c.ontop            end,/g" $CONF_FILE
+
+# Change key to close window
+sed -i "s/awful.key({ modkey, \"Shift\"   }, \"c\",      function (c) c:kill()                         end,/awful.key({ modkey, }, \"w\",      function (c) c:kill()                         end,/g" $CONF_FILE
+
+# Change key to open terminal
+sed -i "s/awful.key({ modkey,           }, \"Return\", function () awful.util.spawn(terminal) end,/awful.key({ modkey,           }, \"t\", function () awful.util.spawn(terminal) end,/g" $CONF_FILE
 
 echo -e "\e[92m\e[1mConfigured awesomewm.\e[m"
 rm username.txt $0
