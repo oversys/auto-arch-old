@@ -27,7 +27,7 @@ echo -e "\e[92m\e[1mCopied default awesomewm configuration.\e[m"
 
 # Edit configuration
 wget -O /home/$USERNAME/wallpaper.png tinyurl.com/vjh-wallpaper
-echo "awful.spawn.with_shell(\"feh --bg-scale /home/$USERNAME/wallpaper.png\")" >> $CONF_FILE
+printf "\nawful.spawn.with_shell(\"feh --bg-scale /home/$USERNAME/wallpaper.png\")" >> $CONF_FILE
 sed -i "s/titlebars_enabled = true/titlebars_enabled = false/g" $CONF_FILE
 sed -i "s/terminal = \"xterm\"/terminal = \"gnome-terminal\"/g" $CONF_FILE
 sed -i "s/awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/-- awful.key({ modkey,           }, \"w\", function () mymainmenu:show() end,/g" $CONF_FILE
