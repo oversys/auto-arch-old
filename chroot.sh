@@ -19,7 +19,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo -e "\e[92m\e[1mSet the system locales.\e[m"
 
 # Hosts
-echo "\e[92m\e[1mEnter hostname:\e[m"
+echo -e "\e[92m\e[1mEnter hostname:\e[m"
 read HOSTNAME
 
 echo $HOSTNAME > /etc/hostname
@@ -49,7 +49,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\e[92m\e[1mInstalled GRUB.\e[m"
 
 # Adding a user
-echo "\e[92m\e[1mEnter username:\e[m"
+echo -e "\e[92m\e[1mEnter username:\e[m"
 read USERNAME
 useradd -m $USERNAME
 usermod -aG wheel,audio,video $USERNAME
@@ -75,7 +75,7 @@ pacman -S --noconfirm --needed base-devel
 echo -e "\e[92m\e[1mInstalled additional necessary packages.\e[m"
 
 # Install Network Packages
-pacman -S --noconfirm networkmanager iw wpa_supplicant dialog wifi-menu
+pacman -S --noconfirm networkmanager iw wpa_supplicant dialog netctl
 systemctl enable NetworkManager.service
 
 # Done
