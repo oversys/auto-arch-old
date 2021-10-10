@@ -39,7 +39,7 @@ echo -e "\e[92m\e[1mFormatted Boot Partition.\e[m"
 mkfs.ext4 /dev/$ROOT_PART
 echo -e "\e[92m\e[1mFormatted Root Partition.\e[m"
 mount /dev/$ROOT_PART /mnt
-echo -e "\e[92m\e[1mMounted \"$ROOT_PART /mnt\".\e[m"
+echo -e "\e[92m\e[1mMounted \"/dev/$ROOT_PART /mnt\".\e[m"
 
 # Install System
 pacstrap /mnt base linux linux-firmware
