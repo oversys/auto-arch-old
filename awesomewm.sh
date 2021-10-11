@@ -18,16 +18,4 @@ gpasswd -a $USERNAME autologin
 systemctl enable lightdm.service
 echo -e "\e[92m\e[1mEnabled display manager.\e[m"
 
-# Better terminal
-mkdir /home/$USERNAME/.config/
-git clone --recursive https://github.com/andresgongora/synth-shell.git
-chmod +x synth-shell/setup.sh
-synth-shell/setup.sh
-mkdir /home/$USERNAME/.config/synth-shell/
-curl -L tinyurl.com/vjh-synth-shell > /home/$USERNAME/.config/synth-shell/synth-shell-prompt.config
-
-# Get alacritty configuration
-mkdir /home/$USERNAME/.config/alacritty
-curl -L tinyurl.com/vjh-alacritty > /home/$USERNAME/.config/alacritty/alacritty.yml
-
 rm username.txt $0
