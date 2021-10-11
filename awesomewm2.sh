@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Get awesomewm configuration
+mkdir /home/$USER/.config/
 mkdir /home/$USER/.config/awesome
 sudo curl -L tinyurl.com/vjh-awesomewm-config > /home/$USER/.config/awesome/rc.lua
 
@@ -24,6 +25,17 @@ cd ../
 rm -rf picom-ibhagwan-git
 mkdir /home/$USER/.config/picom
 sudo cp /etc/xdg/picom.conf.example /home/$USER/.config/picom/picom.conf
+
+# Better terminal
+git clone --recursive https://github.com/andresgongora/synth-shell.git
+sudo chmod +x synth-shell/setup.sh
+synth-shell/setup.sh
+mkdir /home/$USER/.config/synth-shell/
+curl -L tinyurl.com/vjh-synth-shell > /home/$USER/.config/synth-shell/synth-shell-prompt.config
+
+# Get alacritty configuration
+mkdir /home/$USER/.config/alacritty
+curl -L tinyurl.com/vjh-alacritty > /home/$USER/.config/alacritty/alacritty.yml
 
 printf "#!/bin/bash\nkillall -q polybar\nwhile pgrep -u $UID -x polybar >/dev/null; do sleep 1; done\npolybar default &" >> /home/$USER/.config/polybar/launch.sh
 sudo chmod +x /home/$USER/.config/polybar/launch.sh
