@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Get awesomewm configuration
-mkdir .config
 mkdir /home/$USER/.config/awesome
 sudo curl -L tinyurl.com/vjh-awesomewm-config > /home/$USER/.config/awesome/rc.lua
 
