@@ -23,6 +23,7 @@ mkdir /home/$USERNAME/.config/
 git clone --recursive https://github.com/andresgongora/synth-shell.git
 chmod +x synth-shell/setup.sh
 synth-shell/setup.sh
+mkdir /home/$USERNAME/.config/synth-shell/
 curl -L tinyurl.com/vjh-synth-shell > /home/$USERNAME/.config/synth-shell/synth-shell-prompt.config
 
 # Get alacritty configuration
