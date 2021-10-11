@@ -19,6 +19,7 @@ systemctl enable lightdm.service
 echo -e "\e[92m\e[1mEnabled display manager.\e[m"
 
 # Better terminal
+mkdir /home/$USERNAME/.config/
 git clone --recursive https://github.com/andresgongora/synth-shell.git
 chmod +x synth-shell/setup.sh
 synth-shell/setup.sh
