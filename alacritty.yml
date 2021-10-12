@@ -9,14 +9,15 @@ window:
   dimensions:
     columns: 80
     lines: 24
-    
-  #opacity: 0.8
+
+# Background opacity
+background_opacity: 0.95
   
 # Font configuration
 font:
   normal:
     family: Fira Mono
-    style: Regular
+    style: Medium
 
   #bold:
     #family: monospace
