@@ -11,7 +11,7 @@ wget -O /home/$USER/wallpaper.png https://github.com/BetaLost/Arch-Install-Scrip
 # Get polybar
 git clone https://aur.archlinux.org/polybar.git
 cd polybar
-makepkg -si
+makepkg -si --noconfirm
 cd ../
 rm -rf polybar
 mkdir /home/$USER/.config/polybar
@@ -20,7 +20,7 @@ sudo curl -L tinyurl.com/vjh-polybar-config > /home/$USER/.config/polybar/config
 # Get picom
 git clone https://aur.archlinux.org/picom-ibhagwan-git.git
 cd picom-ibhagwan-git
-makepkg -si
+makepkg -si --noconfirm
 cd ../
 rm -rf picom-ibhagwan-git
 mkdir /home/$USER/.config/picom
