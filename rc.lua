@@ -207,7 +207,7 @@ globalkeys = gears.table.join(
               {description = "run prompt", group = "launcher"}),
 
     -- Browser
-    awful.key({ modkey }, "b", function() awful.util.spawn("brave-browser") end, 
+    awful.key({ modkey }, "b", function() awful.util.spawn("brave") end, 
 	      {description = "Open a browser.", group = "launcher"}),
 
     -- Menubar
