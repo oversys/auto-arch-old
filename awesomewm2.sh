@@ -30,5 +30,5 @@ sudo cp /etc/xdg/picom.conf.example /home/$USER/.config/picom/picom.conf
 mkdir /home/$USER/.config/alacritty
 curl -L tinyurl.com/vjh-alacritty > /home/$USER/.config/alacritty/alacritty.yml
 
-printf "#!/bin/bash\nkillall -q polybar\nwhile pgrep -u $UID -x polybar >/dev/null; do sleep 1; done\npolybar default &" >> /home/$USER/.config/polybar/launch.sh
+printf "#\!/bin/bash\nkillall -q polybar\nwhile pgrep -u $UID -x polybar >/dev/null; do sleep 1; done\npolybar default &" >> /home/$USER/.config/polybar/launch.sh
 sudo chmod +x /home/$USER/.config/polybar/launch.sh
