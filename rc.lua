@@ -53,7 +53,7 @@ editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Set wallpaper
-awful.spawn.with_shell("feh --bg-scale /home/chief/wallpaper.jpg")
+awful.spawn.with_shell("feh --bg-scale /home/chief/wallpaper.png")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
