@@ -6,7 +6,7 @@ mkdir /home/$USER/.config/awesome
 sudo curl -L tinyurl.com/vjh-awesomewm-config > /home/$USER/.config/awesome/rc.lua
 
 # Get wallpaper
-wget -O /home/$USER/wallpaper.jpg https://github.com/BetaLost/Arch-Install-Script/blob/main/wallpaper.jpg?raw=true
+wget -O /home/$USER/wallpaper.png https://github.com/BetaLost/Arch-Install-Script/blob/main/wallpaper.png?raw=true
 
 # Get polybar
 git clone https://aur.archlinux.org/polybar.git
