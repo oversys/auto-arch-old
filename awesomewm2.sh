@@ -25,6 +25,16 @@ rm -rf polybar
 mkdir /home/$USER/.config/polybar
 sudo curl -L tinyurl.com/vjh-polybar-config > /home/$USER/.config/polybar/config
 
+# Get polywins
+git clone https://github.com/tam-carre/polywins.git
+mkdir /home/$USER/.config/polybar/scripts
+PW_FILE="/home/$USER/.config/polybar/scripts/polywins.sh"
+mv polywins/polywins.sh $PW_FILE
+rm -rf polywins
+sed -i "s/active_text_color=\"#250F0B\"/active_text_color=\"#FFFFFF\"/g" $PW_FILE
+sed -i "s/inactive_text_color=\"#250F0B\"/inactive_text_color=\"#FFFFFF\"/g" $PW_FILE
+sed -i "s/active_underline=\"#ECB3B2\"/active_underline=\"#D9C8A0\"/g" $PW_FILE
+
 # Get picom
 git clone https://aur.archlinux.org/picom-ibhagwan-git.git
 cd picom-ibhagwan-git
