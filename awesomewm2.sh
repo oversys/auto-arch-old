@@ -8,6 +8,9 @@ sudo curl -L tinyurl.com/vjh-awesomewm-config > /home/$USER/.config/awesome/rc.l
 # Get wallpaper
 wget -O /home/$USER/wallpaper.png https://github.com/BetaLost/Arch-Install-Script/blob/main/wallpaper.png?raw=true
 
+# Terminal colorscheme
+printf "\n(cat ~/.cache/wal/sequences &)" >> /home/$USER/.bashrc
+
 # Get brave
 git clone https://aur.archlinux.org/brave-bin.git
 cd brave-bin
