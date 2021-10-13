@@ -53,8 +53,8 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Set wallpaper
-awful.spawn.with_shell("feh --bg-scale /home/chief/wallpaper.png")
-awful.spawn.with_shell("wal -i /home/chief/wallpaper.png")
+awful.spawn.with_shell("feh --bg-scale $HOME/wallpaper.png")
+-- awful.spawn.with_shell("wal -i $HOME/wallpaper.png")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -454,5 +454,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 5
 
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("/home/chief/.config/polybar/launch.sh")
+awful.spawn.with_shell("$HOME/.config/polybar/launch.sh")
 awful.spawn.with_shell("nm-applet")
