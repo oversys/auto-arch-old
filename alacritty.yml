@@ -7,7 +7,7 @@
 # will be replaced.
 window:
   dimensions:
-    columns: 80
+    columns: 75
     lines: 24
 
 # Background opacity
