@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install packages
-pacman -Syu --noconfirm lightdm lightdm-gtk-greeter awesome xorg-server alacritty wget git ttf-dejavu ttf-fira-sans ttf-fira-mono network-manager-applet feh imagemagick python-pywal
+pacman -Syu --noconfirm lightdm lightdm-gtk-greeter awesome xorg-server alacritty wget git ttf-dejavu ttf-fira-sans ttf-fira-mono network-manager-applet feh imagemagick python-pywal wmctrl xorg-xprop slop
 echo -e "\e[92m\e[1mInstalled packages.\e[m"
 
 # Get username
