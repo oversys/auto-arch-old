@@ -1,7 +1,28 @@
 #!/bin/bash
 
 # Install packages
-pacman -Syu --noconfirm lightdm lightdm-gtk-greeter awesome xorg-server alacritty wget git ttf-dejavu ttf-fira-sans ttf-fira-mono network-manager-applet feh imagemagick python-pywal wmctrl xorg-xprop slop
+
+# Update the database
+pacman -Syu --noconfirm
+
+# Display manager
+pacman -S --noconfirm lightdm lightdm-gtk-greeter
+
+# Window Manager
+pacman -S --noconfirm awesome xorg-server ttf-dejavu
+
+# Terminal
+pacman -S --noconfirm alacritty ttf-fira-mono
+
+# Retrieving tools
+pacman -S --noconfirm wget git
+
+# Wallpaper + Colorscheme
+pacman -S --noconfirm feh imagemagick python-pywal
+
+# Polybar + Polywins
+pacman -S --noconfirm ttf-fira-sans network-manager-applet wmctrl xorg-xprop slop
+
 echo -e "\e[92m\e[1mInstalled packages.\e[m"
 
 # Get username
