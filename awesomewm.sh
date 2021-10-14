@@ -35,7 +35,7 @@ done < username.txt
 
 # Get Aether theme
 git clone https://github.com/NoiSek/Aether.git
-cp Aether /usr/share/lightdm-webkit/themes/
+cp --recursive Aether /usr/share/lightdm-webkit/themes/
 sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
 ln -s /usr/share/lightdm-webkit/themes/Aether /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
 sed -i "s/# greeter-session = Session to load for greeter/greeter-session = lightdm-webkit2-greeter/g" /etc/lightdm/lightdm.conf
@@ -43,10 +43,6 @@ sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-gre
 sed -i "s/# user-session = Session to load for users/user-session = awesome/g" /etc/lightdm/lightdm.conf
 sed -i "s/#user-session=default/user-session=awesome/g" /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
-
-# Fix default user icon
-cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png var/lib/AccountsService/icons/$USERNAME.png
-sed -i "s/Icon=\/home\/$USERNAME\/.face/\/var\/lib\/AccountsService\/icons\/$USERNAME.png" /var/lib/AccountsService/users/$USERNAME
 
 echo -e "\e[92m\e[1mEnabled display manager.\e[m"
 
