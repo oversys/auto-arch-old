@@ -54,7 +54,6 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- Set wallpaper
 awful.spawn.with_shell("feh --bg-scale $HOME/wallpaper.png")
--- awful.spawn.with_shell("wal -i $HOME/wallpaper.png")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -111,6 +110,9 @@ awful.screen.connect_for_each_screen(function(s)
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 end)
 -- }}}
+
+-- Set wallpaper again
+awful.spawn.with_shell("feh --bg-scale $HOME/wallpaper.png")
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
