@@ -124,6 +124,13 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+	
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("light -A 5") end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("light -U 5") end),
+	
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey, "Ctrl"           }, "Left",   awful.tag.viewprev,
