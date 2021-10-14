@@ -69,3 +69,7 @@ printf '#!/bin/bash\nkillall -q polybar\nwhile pgrep -u '"$UID -x polybar >/dev/
 sudo chmod +x $HOME/.config/polybar/launch.sh
 
 echo -e "\e[92m\e[1mCreated polybar launch script.\e[m"
+
+echo -e "\e[92m\e[1mConfigured desktop. Press Ctrl + Super + R to refresh.\e[m"
+
+rm $0
