@@ -31,7 +31,9 @@ do
     USERNAME=$line
 done < username.txt
 
-# Lightdm autologin
+# Lightdm
+
+chmod a+rw /sys/class/backlight/intel_backlight/brightness
 
 # Get Aether theme
 git clone https://github.com/NoiSek/Aether.git
