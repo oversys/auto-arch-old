@@ -9,7 +9,7 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 
 # Window Manager
-pacman -S --noconfirm awesome xorg-server ttf-dejavu dmenu
+pacman -S --noconfirm awesome xorg-server ttf-dejavu dmenu light
 
 # Terminal
 pacman -S --noconfirm alacritty ttf-fira-mono
