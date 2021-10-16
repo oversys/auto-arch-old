@@ -2,7 +2,7 @@
 
 # Fix default user icon
 sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER.png
-sudo sed -i "s/Icon=\/home\/$USER\/.face/\/var\/lib\/AccountsService\/icons\/$USER.png/g" /var/lib/AccountsService/users/$USER
+sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER.png/g" /var/lib/AccountsService/users/$USER
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
@@ -66,7 +66,7 @@ rm -rf picom-ibhagwan-git
 mkdir $HOME/.config/picom
 curl -L tinyurl.com/vjh-picom > $HOME/.config/picom/picom.conf
 
-echo -e "\e[92m\e[1mDownloaded picom compositor.\e[m"
+echo -e "\e[92m\e[1mDownloaded and configured picom compositor.\e[m"
 
 # Get alacritty configuration
 mkdir $HOME/.config/alacritty
