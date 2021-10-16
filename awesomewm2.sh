@@ -6,6 +6,9 @@ sudo sed -i "s/Icon=\/home\/$USER\/.face/\/var\/lib\/AccountsService\/icons\/$US
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
+# Configure .bashrc
+curl -L tinyurl.com/vjh-bashrc > $HOME/.bashrc
+
 # Get awesomewm configuration
 mkdir $HOME/.config/
 mkdir $HOME/.config/awesome
@@ -61,7 +64,7 @@ makepkg -si --noconfirm
 cd ../
 rm -rf picom-ibhagwan-git
 mkdir $HOME/.config/picom
-sudo cp /etc/xdg/picom.conf.example $HOME/.config/picom/picom.conf
+curl -L tinyurl.com/vjh-picom > $HOME/.config/picom/picom.conf
 
 echo -e "\e[92m\e[1mDownloaded picom compositor.\e[m"
 
