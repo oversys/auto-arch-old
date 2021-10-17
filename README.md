@@ -1,4 +1,4 @@
-# Arch-Install-Script
+# Arch Install Script
 This is my personal Arch Linux installation script. This script will install the Awesome window manager and the Alacritty terminal.
 
 # Instructions:
