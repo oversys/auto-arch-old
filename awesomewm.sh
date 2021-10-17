@@ -17,6 +17,9 @@ pacman -S --noconfirm alacritty ttf-fira-mono
 # Retrieving tools
 pacman -S --noconfirm wget git
 
+# Audio tools
+pacman -S --noconfirm pulseaudio pavucontrol alsa-utils
+
 # Wallpaper + Colorscheme
 pacman -S --noconfirm feh imagemagick python-pywal
 
