@@ -131,6 +131,14 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86MonBrightnessDown", function ()
         awful.spawn("light -U 5") end),
 	
+    -- Audio
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+       awful.util.spawn("amixer set Master 5%+") end),
+   awful.key({ }, "XF86AudioLowerVolume", function ()
+       awful.util.spawn("amixer set Master 5%-") end),
+   awful.key({ }, "XF86AudioMute", function ()
+       awful.util.spawn("amixer set Master toggle") end),
+	
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey, "Ctrl"           }, "Left",   awful.tag.viewprev,
