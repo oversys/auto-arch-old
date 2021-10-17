@@ -31,6 +31,8 @@ echo -e "\e[92m\e[1mSet terminal colorscheme.\e[m"
 git clone https://aur.archlinux.org/brave-bin.git
 cd brave-bin
 makepkg -si --noconfirm
+cd ../
+rm -rf brave-bin
 
 echo -e "\e[92m\e[1mDownloaded brave browser.\e[m"
 
