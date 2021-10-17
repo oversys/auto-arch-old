@@ -23,7 +23,7 @@ This is my personal Arch Linux installation script. This script will install the
 - Run the script: `./awesomewm.sh`
 - Wait for the script to install the packages.
 - Exit chroot: `exit`
-- Boot into the system: `reboot` (Make sure to unplug the install medium)
+- Boot into the system: `reboot` (Make sure to remove the install medium)
 
 > **After first boot**
 - Download the fourth script: `curl -L tinyurl.com/vjh-awesomewm2 > awesomewm2.sh`
