@@ -1,5 +1,5 @@
-# Arch Install Script
-This is my personal Arch Linux installation script. This script will install the Awesome window manager and the Alacritty terminal.
+# Arch Linux Installation Script
+This is my personal Arch Linux installation script. This script will install the Awesome window manager and the Alacritty terminal emulator.
 
 # Instructions:
 > **Before chrooting into the system**
