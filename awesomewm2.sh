@@ -6,24 +6,27 @@ sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
-# Configure .bashrc
-curl -L tinyurl.com/vjh-bashrc > $HOME/.bashrc
+# Download configuration files
+git clone https://github.com/BetaLost/dotfiles.git
 
-# Get awesomewm configuration
+# Configure .bashrc
+mv $HOME/dotfiles/.bashrc $HOME/
+
+echo -e "\e[92m\e[1mConfigured bash.\e[m"
+
+# Configure awesome window manager
 mkdir $HOME/.config/
-mkdir $HOME/.config/awesome
-sudo curl -L tinyurl.com/vjh-awesomewm-config > $HOME/.config/awesome/rc.lua
+sudo mv $HOME/dotfiles/awesome $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
-# Get wallpaper
-wget -O $HOME/wallpaper.png https://github.com/BetaLost/Arch-Install-Script/blob/main/wallpaper.png?raw=true
+# Move wallpaper
+mv $HOME/dotfiles/wallpaper.png $HOME/
 
-echo -e "\e[92m\e[1mDownloaded wallpaper..\e[m"
+echo -e "\e[92m\e[1mMoved wallpaper.\e[m"
 
 # Terminal colorscheme
 wal -i $HOME/wallpaper.png
-printf "\n(cat ~/.cache/wal/sequences &)" >> $HOME/.bashrc
 
 echo -e "\e[92m\e[1mSet terminal colorscheme.\e[m"
 
@@ -42,22 +45,11 @@ cd polybar
 makepkg -si --noconfirm
 cd ../
 rm -rf polybar
-mkdir $HOME/.config/polybar
-sudo curl -L tinyurl.com/vjh-polybar-config > $HOME/.config/polybar/config
+sudo mv $HOME/dotfiles/polybar $HOME/.config/
+sudo chmod +x $HOME/.config/polybar/launch.sh
+sudo chmod +x $HOME/.config/polybar/scripts/polywins.sh
 
-echo -e "\e[92m\e[1mDownloaded and configured polybar.\e[m"
-
-# Get polywins
-git clone https://github.com/tam-carre/polywins.git
-mkdir $HOME/.config/polybar/scripts
-PW_FILE="$HOME/.config/polybar/scripts/polywins.sh"
-mv polywins/polywins.sh $PW_FILE
-rm -rf polywins
-sed -i "s/active_text_color=\"#250F0B\"/active_text_color=\"#FFFFFF\"/g" $PW_FILE
-sed -i "s/inactive_text_color=\"#250F0B\"/inactive_text_color=\"#FFFFFF\"/g" $PW_FILE
-sed -i "s/active_underline=\"#ECB3B2\"/active_underline=\"#D9C8A0\"/g" $PW_FILE
-
-echo -e "\e[92m\e[1mDownloaded and configured polywins.\e[m"
+echo -e "\e[92m\e[1mDownloaded and configured polybar + polywins.\e[m"
 
 # Get picom
 git clone https://aur.archlinux.org/picom-ibhagwan-git.git
@@ -65,21 +57,14 @@ cd picom-ibhagwan-git
 makepkg -si --noconfirm
 cd ../
 rm -rf picom-ibhagwan-git
-mkdir $HOME/.config/picom
-curl -L tinyurl.com/vjh-picom > $HOME/.config/picom/picom.conf
+sudo mv $HOME/dotfiles/picom $HOME/.config/
 
 echo -e "\e[92m\e[1mDownloaded and configured picom compositor.\e[m"
 
-# Get alacritty configuration
-mkdir $HOME/.config/alacritty
-curl -L tinyurl.com/vjh-alacritty > $HOME/.config/alacritty/alacritty.yml
+# Configure alacritty
+sudo mv $HOME/dotfiles/alacritty $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured alacritty terminal.\e[m"
-
-printf '#!/bin/bash\nkillall -q polybar\nwhile pgrep -u '"$UID -x polybar >/dev/null; do sleep 1; done\npolybar default &" >> $HOME/.config/polybar/launch.sh
-sudo chmod +x $HOME/.config/polybar/launch.sh
-
-echo -e "\e[92m\e[1mCreated polybar launch script.\e[m"
 
 echo -e "\e[92m\e[1mConfigured desktop. Press Ctrl + Super + R to refresh.\e[m"
 
