@@ -37,7 +37,7 @@ makepkg -si --noconfirm
 cd ../
 rm -rf brave-bin
 
-echo -e "\e[92m\e[1mDownloaded brave browser.\e[m"
+echo -e "\e[92m\e[1mInstalled brave browser.\e[m"
 
 # Get polybar
 git clone https://aur.archlinux.org/polybar.git
@@ -49,7 +49,7 @@ sudo mv $HOME/dotfiles/polybar $HOME/.config/
 sudo chmod +x $HOME/.config/polybar/launch.sh
 sudo chmod +x $HOME/.config/polybar/scripts/polywins.sh
 
-echo -e "\e[92m\e[1mDownloaded and configured polybar + polywins.\e[m"
+echo -e "\e[92m\e[1mInstalled and configured polybar + polywins.\e[m"
 
 # Get picom
 git clone https://aur.archlinux.org/picom-ibhagwan-git.git
@@ -59,7 +59,7 @@ cd ../
 rm -rf picom-ibhagwan-git
 sudo mv $HOME/dotfiles/picom $HOME/.config/
 
-echo -e "\e[92m\e[1mDownloaded and configured picom compositor.\e[m"
+echo -e "\e[92m\e[1mInstalled and configured picom compositor.\e[m"
 
 # Configure alacritty
 sudo mv $HOME/dotfiles/alacritty $HOME/.config/
