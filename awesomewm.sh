@@ -55,7 +55,7 @@ systemctl enable lightdm.service
 echo -e "\e[92m\e[1mEnabled display manager.\e[m"
 
 # Install cursor
-wget https://dl1.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MzQyMTU4NDkiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjA4Y2I3NWYxNmIwOWU5OGJmYmI4NWQxYjNkMzE4ZDNjNTc2MGU0MGQ5YmJhYjU5NzA4Y2Q0ZmQ5MDc4YzEyOTk0MTc3MTU4YWU2MjY1NDkzOWUyMWY0NGIzY2NlNDk4ZDdiNGY5NjdiZjQ2ZDZiZDA0ODY3ZDVhYTg3ZjhhY2Q4IiwidCI6MTYzNDU0NDEzNiwic3RmcCI6ImY3NTBhOTM0YTU3MzkxOTFjNWY3ZmRhZjg0NWJkZTFkIiwic3RpcCI6IjE4OC40OS42LjI0NSJ9.c5tSDwfq_pHnyOBMovd8_oWgQf8yNqTm9Igy3Egik_k/macOSBigSur.tar.gz
+wget https://github.com/BetaLost/Arch-Install-Script/blob/main/macOSBigSur.tar.gz?raw=true
 tar -xvf macOSBigSur.tar.gz
 mv macOSBigSur /usr/share/icons/
 
