@@ -9,7 +9,7 @@ echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 # Change cursor
 sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" $HOME/.icons/default/index.theme
 sed -i "s/gtk-cursor-theme-name=\"Adwaita\"/gtk-cursor-theme-name=\"macOSBigSur\"/g" $HOME/.gtkrc-2.0
-sed -i "s/gtk-cursor-theme-name=\"Adwaita\"/gtk-cursor-theme-name=\"macOSBigSur\"/g" $HOME/.config/gtk-3.0/settings.ini
+sed -i "s/gtk-cursor-theme-name=Adwaita/gtk-cursor-theme-name=macOSBigSur/g" $HOME/.config/gtk-3.0/settings.ini
 
 # Download configuration files
 git clone https://github.com/BetaLost/dotfiles.git
