@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Fix default user icon
-sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER.png
-sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER.png/g" /var/lib/AccountsService/users/$USER
+sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
+sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER/g" /var/lib/AccountsService/users/$USER
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
