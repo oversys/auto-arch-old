@@ -66,6 +66,8 @@ sudo mv $HOME/dotfiles/alacritty $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured alacritty terminal.\e[m"
 
+rm -rf $HOME/dotfiles
+
 echo -e "\e[92m\e[1mConfigured desktop. Press Ctrl + Super + R to refresh.\e[m"
 
 rm $0
