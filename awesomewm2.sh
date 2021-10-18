@@ -6,6 +6,10 @@ sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
+# Change cursor
+sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g $OME/.icons/default/index.theme
+sed -i "s/gtk-cursor-theme-name=\"Adwaita\"/gtk-cursor-theme-name=\"macOSBigSur\"/g
+
 # Download configuration files
 git clone https://github.com/BetaLost/dotfiles.git
 
