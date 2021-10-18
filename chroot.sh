@@ -72,11 +72,14 @@ echo -e "\e[92m\e[1mConfigured sudo.\e[m"
 
 # Additional necessary packages
 pacman -S --noconfirm --needed base-devel
+
 echo -e "\e[92m\e[1mInstalled additional necessary packages.\e[m"
 
 # Install Network Packages
 pacman -S --noconfirm networkmanager iw wpa_supplicant dialog netctl
 systemctl enable NetworkManager.service
+
+echo -e "\e[92m\e[1mInstalled network packages.\e[m"
 
 # Done
 echo -e "\e[92m\e[1mBasic installation complete.\e[m"
