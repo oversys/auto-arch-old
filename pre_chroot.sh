@@ -12,7 +12,7 @@ echo -e "\e[92m\e[1mUpdated the System Clock.\e[m"
 
 # Print partitions
 echo -e "\e[92m\e[1mCurrent partitions:\e[m"
-fdisk -l
+fdisk -l /dev/sda
 
 # Get Boot Partition
 echo -e "\e[92m\e[1mBoot Partition (sdaX):\e[m"
