@@ -30,7 +30,7 @@ pacman -S --noconfirm ttf-fira-sans network-manager-applet wmctrl xorg-xprop slo
 pacman -S --noconfirm libx11 libxcursor libpng
 
 # GPU Drivers
-pacman -S --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu
+pacman -S --noconfirm mesa mesa-demos lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu
 
 echo -e "\e[92m\e[1mInstalled packages.\e[m"
 
