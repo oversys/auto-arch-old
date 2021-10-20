@@ -10,6 +10,10 @@ echo -e "\e[92m\e[1mChanged Font.\e[m"
 timedatectl set-ntp true
 echo -e "\e[92m\e[1mUpdated the System Clock.\e[m"
 
+# Print partitions
+echo -e "\e[92m\e[1mCurrent partitions:\e[m"
+fdisk -l
+
 # Get Boot Partition
 echo -e "\e[92m\e[1mBoot Partition (sdaX):\e[m"
 read BOOT_PART
