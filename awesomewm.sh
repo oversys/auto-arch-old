@@ -62,4 +62,6 @@ wget https://github.com/BetaLost/Arch-Install-Script/raw/main/macOSBigSur.tar.gz
 tar -xvf macOSBigSur.tar.gz
 mv macOSBigSur /usr/share/icons/
 
+echo -e "\e[92m\e[1mInstalled cursor theme.\e[m"
+
 rm username.txt $0
