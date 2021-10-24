@@ -9,7 +9,7 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 
 # Window Manager
-pacman -S --noconfirm awesome xorg-server ttf-dejavu dmenu light network-manager-applet
+pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans dmenu light network-manager-applet
 
 # Terminal
 pacman -S --noconfirm alacritty ttf-fira-mono
@@ -27,8 +27,8 @@ systemctl enable bluetooth.service
 # Wallpaper + Colorscheme
 pacman -S --noconfirm feh imagemagick python-pywal
 
-# Polybar + Polywins
-# pacman -S --noconfirm ttf-fira-sans wmctrl xorg-xprop slop
+# Polywins (Polybar script)
+# pacman -S --noconfirm wmctrl xorg-xprop slop
 
 # Cursor
 pacman -S --noconfirm libx11 libxcursor libpng
