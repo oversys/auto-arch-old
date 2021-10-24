@@ -20,11 +20,15 @@ pacman -S --noconfirm wget git
 # Audio tools
 pacman -S --noconfirm pulseaudio pavucontrol alsa-utils
 
+# Bluetooth
+pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
+systemctl enable bluetooth.service
+
 # Wallpaper + Colorscheme
 pacman -S --noconfirm feh imagemagick python-pywal
 
 # Polybar + Polywins
-pacman -S --noconfirm ttf-fira-sans network-manager-applet wmctrl xorg-xprop slop
+# pacman -S --noconfirm ttf-fira-sans wmctrl xorg-xprop slop
 
 # Cursor
 pacman -S --noconfirm libx11 libxcursor libpng
