@@ -51,6 +51,7 @@ chmod a+rw /sys/class/backlight/intel_backlight/brightness
 # Get Aether theme
 git clone https://github.com/NoiSek/Aether.git
 cp --recursive Aether /usr/share/lightdm-webkit/themes/
+rm -rf Aether
 sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
 ln -s /usr/share/lightdm-webkit/themes/Aether /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
 sed -i "s/# greeter-session = Session to load for greeter/greeter-session = lightdm-webkit2-greeter/g" /etc/lightdm/lightdm.conf
