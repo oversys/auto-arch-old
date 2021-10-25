@@ -36,13 +36,8 @@ sudo mv $HOME/dotfiles/awesome $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
-# Move wallpaper
-mv $HOME/dotfiles/wallpaper.png $HOME/
-
-echo -e "\e[92m\e[1mMoved wallpaper.\e[m"
-
 # Terminal colorscheme
-wal -i $HOME/wallpaper.png
+wal -i $HOME/.config/awesome/themes/powerarrow/wall.png
 
 echo -e "\e[92m\e[1mSet terminal colorscheme.\e[m"
 
@@ -54,18 +49,6 @@ cd ../
 rm -rf brave-bin
 
 echo -e "\e[92m\e[1mInstalled brave browser.\e[m"
-
-# Get polybar
-git clone https://aur.archlinux.org/polybar.git
-cd polybar
-makepkg -si --noconfirm
-cd ../
-rm -rf polybar
-sudo mv $HOME/dotfiles/polybar $HOME/.config/
-sudo chmod +x $HOME/.config/polybar/launch.sh
-sudo chmod +x $HOME/.config/polybar/scripts/polywins.sh
-
-echo -e "\e[92m\e[1mInstalled and configured polybar + polywins.\e[m"
 
 # Get picom
 git clone https://aur.archlinux.org/picom-ibhagwan-git.git
