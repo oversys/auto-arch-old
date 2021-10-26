@@ -36,8 +36,6 @@ sudo mv $HOME/dotfiles/awesome $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
-echo -e "\e[92m\e[1mSet terminal colorscheme.\e[m"
-
 # Get brave
 git clone https://aur.archlinux.org/brave-bin.git
 cd brave-bin
