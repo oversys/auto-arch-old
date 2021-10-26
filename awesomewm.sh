@@ -68,6 +68,8 @@ tar -xf macOSBigSur.tar.gz
 mv macOSBigSur /usr/share/icons/
 rm -rf macOSBigSur.tar.gz
 
+sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
+
 echo -e "\e[92m\e[1mInstalled cursor theme.\e[m"
 
 rm username.txt $0
