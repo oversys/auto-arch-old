@@ -36,9 +36,6 @@ sudo mv $HOME/dotfiles/awesome $HOME/.config/
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
-# Terminal colorscheme
-wal -i $HOME/.config/awesome/themes/powerarrow/wall.png
-
 echo -e "\e[92m\e[1mSet terminal colorscheme.\e[m"
 
 # Get brave
