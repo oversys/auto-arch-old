@@ -44,9 +44,11 @@ do
     USERNAME=$line
 done < username.txt
 
-# Lightdm
-
+# Set permissions for brightness and mute button led
 chmod a+rw /sys/class/backlight/intel_backlight/brightness
+chmod a+rw /sys/class/leds/hda\:\:mute/brightness
+
+# Lightdm
 
 # Get Aether theme
 git clone https://github.com/NoiSek/Aether.git
