@@ -18,7 +18,7 @@ pacman -S --noconfirm alacritty ttf-fira-mono
 pacman -S --noconfirm wget git
 
 # Audio tools
-pacman -S --noconfirm pulseaudio pavucontrol alsa-utils
+pacman -S --noconfirm pulseaudio pulsemixer pavucontrol alsa-utils
 
 # Bluetooth
 pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
