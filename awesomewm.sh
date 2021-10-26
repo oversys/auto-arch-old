@@ -25,7 +25,7 @@ pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
 systemctl enable bluetooth.service
 
 # Wallpaper + Colorscheme
-pacman -S --noconfirm feh imagemagick python-pywal
+pacman -S --noconfirm feh imagemagick python-pywal jq
 
 # Polywins (Polybar script)
 # pacman -S --noconfirm wmctrl xorg-xprop slop
