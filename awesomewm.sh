@@ -9,7 +9,7 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 
 # Window Manager
-pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans dmenu light network-manager-applet
+pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans rofi light network-manager-applet
 
 # Terminal
 pacman -S --noconfirm alacritty ttf-fira-mono
