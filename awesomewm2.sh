@@ -33,6 +33,7 @@ echo -e "\e[92m\e[1mConfigured bash.\e[m"
 # Configure awesome window manager
 mkdir $HOME/.config/
 sudo mv $HOME/dotfiles/awesome $HOME/.config/
+sudo chmod +x $HOME/.config/awesome/themes/powerarrow/s_wall.sh
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
