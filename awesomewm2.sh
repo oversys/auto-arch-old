@@ -37,6 +37,11 @@ sudo chmod +x $HOME/.config/awesome/themes/powerarrow/s_wall.sh
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
+# Configure rofi
+sudo mv $HOME/dotfiles/rofi $HOME/.config/
+
+echo -e "\e[92m\e[1mConfigured rofi.\e[m"
+
 # Get brave
 git clone https://aur.archlinux.org/brave-bin.git
 cd brave-bin
