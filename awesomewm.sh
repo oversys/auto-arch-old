@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Enable multilib
+printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
 # Install packages
 
 # Update the database
