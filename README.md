@@ -1,5 +1,5 @@
 # Arch Linux Installation Script
-This is my personal Arch Linux installation script. This script will install the Awesome window manager and the Alacritty terminal emulator.
+This is my personal Arch Linux installation script. This script will install either the Awesome window manager (awesomewm) and the Alacritty terminal emulator OR the Dynamic Window Manager (dwm) and the simple terminal emulator (st).
 
 # Instructions:
 > **Before chrooting into the system**
@@ -19,9 +19,9 @@ This is my personal Arch Linux installation script. This script will install the
 - Answer the prompts.
 
 > **After base install**
-- Download the third script: `curl -L tinyurl.com/vjh-awesomewm > awesomewm.sh`
-- Make it executable: `chmod +x awesomewm.sh`
-- Run the script: `./awesomewm.sh`
+- Download the third script: `curl -L tinyurl.com/vjh-awesomewm > awesomewm.sh`/`curl -L tinyurl.com/vjh-dwm > dwm.sh`
+- Make it executable: `chmod +x awesomewm.sh`/`chmod +x dwm.sh`
+- Run the script: `./awesomewm.sh`/`./dwm.sh`
 - Wait for the script to install the packages.
 - Exit chroot: `exit`
 - Boot into the system: `reboot` (Make sure to remove the install medium)
