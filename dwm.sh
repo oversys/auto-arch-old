@@ -12,7 +12,7 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 
 # Window Manager
-pacman -S --noconfirm xorg-server xorg-xinit xorg-xrandr xorg-xsetroot ttf-fira-sans ttf-fira-mono light network-manager-applet 
+pacman -S --noconfirm xorg-server xorg-xinit xorg-xrandr xorg-xsetroot ttf-fira-sans ttf-fira-mono icu light network-manager-applet 
 
 # Retrieving tools
 pacman -S --noconfirm wget git
