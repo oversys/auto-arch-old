@@ -15,7 +15,7 @@ pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans rofi light network-manager-applet
 
 # Terminal
-pacman -S --noconfirm alacritty ttf-fira-mono
+pacman -S --noconfirm alacritty fish ttf-fira-mono
 
 # Retrieving tools
 pacman -S --noconfirm wget git
@@ -76,5 +76,10 @@ rm -rf macOSBigSur.tar.gz
 sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
 
 echo -e "\e[92m\e[1mInstalled cursor theme.\e[m"
+
+# Change shell
+chsh -s /bin/fish $USERNAME
+fish -c "curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent"
+fish -c "source /tmp/pure_installer.fish; and install_pure"
 
 rm username.txt $0
