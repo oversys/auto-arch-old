@@ -82,4 +82,6 @@ chsh -s /bin/fish $USERNAME
 fish -c "curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent"
 fish -c "source /tmp/pure_installer.fish; and install_pure"
 
+echo -e "\e[92m\e[1mInstalled Friendly Interactive SHell (FISH).\e[m"
+
 rm username.txt $0
