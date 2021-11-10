@@ -13,7 +13,12 @@ printf "\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config
 echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
 
 # Download configuration files
-git clone https://github.com/BetaLost/dotfiles.git
+if [[ $1  == "powerarrow" ]]
+then
+    git clone https://github.com/BetaLost/dotfiles.git
+else
+    git clone https://github.com/BetaLost/dotfiles-two.git
+fi
 
 # Configure .bashrc
 mv $HOME/dotfiles/.bashrc $HOME/
