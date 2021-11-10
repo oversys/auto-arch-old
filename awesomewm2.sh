@@ -12,12 +12,20 @@ fish -c "source /tmp/pure_installer.fish; and install_pure"
 printf "\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
 echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
 
+# Download Nerd Font
+git clone https://aur.archlinux.org/nerd-fonts-jetbrains-mono.git
+cd nerd-fonts-jetbrains-mono
+makepkg -si --noconfirm
+cd ../
+rm -rf nerd-fonts-jetbrains-mono
+
 # Download configuration files
 if [[ $1  == "powerarrow" ]]
 then
     git clone https://github.com/BetaLost/dotfiles.git
 else
     git clone https://github.com/BetaLost/dotfiles-two.git
+    mv $HOME/dotfiles-two $HOME/dotfiles
 fi
 
 # Configure .bashrc
@@ -29,6 +37,13 @@ echo -e "\e[92m\e[1mConfigured bash.\e[m"
 mkdir $HOME/.config/
 sudo mv $HOME/dotfiles/awesome $HOME/.config/
 sudo chmod +x $HOME/.config/awesome/themes/powerarrow/s_wall.sh
+
+if [[ $1  == "powerarrow" ]]
+then
+    git clone https://github.com/BetaLost/wallpapers.git $HOME/.config/awesome/themes/powerarrow/wallpapers
+else
+    git clone https://github.com/BetaLost/wallpapers.git
+fi
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
 
