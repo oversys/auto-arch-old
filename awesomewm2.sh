@@ -36,13 +36,14 @@ echo -e "\e[92m\e[1mConfigured bash.\e[m"
 # Configure awesome window manager
 mkdir $HOME/.config/
 sudo mv $HOME/dotfiles/awesome $HOME/.config/
-sudo chmod +x $HOME/.config/awesome/themes/powerarrow/s_wall.sh
 
 if [[ $1  == "powerarrow" ]]
 then
     git clone https://github.com/BetaLost/wallpapers.git $HOME/.config/awesome/themes/powerarrow/wallpapers
+    sudo chmod +x $HOME/.config/awesome/themes/powerarrow/s_wall.sh
 else
     git clone https://github.com/BetaLost/wallpapers.git
+    sudo chmod +x $HOME/.config/awesome/s_wall.sh
 fi
 
 echo -e "\e[92m\e[1mConfigured awesome window manager.\e[m"
