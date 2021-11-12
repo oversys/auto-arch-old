@@ -44,8 +44,8 @@ done < username.txt
 # DWM + ST + DMENU
 CDIR="/home/$username/.config"
 mkdir $CDIR
-git clone https://github.com/BetaLost/dwm.git $CDIR/dwm
-git clone https://github.com/BetaLost/st.git $CDIR/st
+git clone git://git.suckless.org/dwm $CDIR/dwm
+git clone git://git.suckless.org/st $CDIR/st
 git clone git://git.suckless.org/dmenu $CDIR/dmenu
 cd $CDIR/dwm && make clean install
 cd ../st && make clean install
