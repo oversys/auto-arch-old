@@ -7,9 +7,7 @@ sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
 # Configure shell
-fish -c "curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent"
-fish -c "source /tmp/pure_installer.fish; and install_pure"
-printf "\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
+printf "\nset fish_greeting\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
 echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
 
 # Download Nerd Font
