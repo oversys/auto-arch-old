@@ -6,10 +6,6 @@ sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons
 
 echo -e "\e[92m\e[1mFixed default user icon.\e[m"
 
-# Configure shell
-printf "\nset fish_greeting\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
-echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
-
 # Download Nerd Font
 git clone https://aur.archlinux.org/nerd-fonts-jetbrains-mono.git
 cd nerd-fonts-jetbrains-mono
@@ -26,10 +22,16 @@ else
     mv $HOME/dotfiles-two $HOME/dotfiles
 fi
 
+# Configure shell
+printf "\nset fish_greeting\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
+cp -r $HOME/dotfiles/fish $HOME/.config/fish
+
+echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
+
 # Configure .bashrc
 mv $HOME/dotfiles/.bashrc $HOME/
 
-echo -e "\e[92m\e[1mConfigured bash.\e[m"
+echo -e "\e[92m\e[1mConfigured the BASH shell.\e[m"
 
 # Configure awesome window manager
 mkdir $HOME/.config/
