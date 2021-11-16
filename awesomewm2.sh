@@ -23,8 +23,8 @@ else
 fi
 
 # Configure shell
-printf "\nset fish_greeting\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
-cp -r $HOME/dotfiles/fish $HOME/.config/fish
+printf "\nset fish_prompt_pwd_dir_length 0\nset fish_greeting\nbind \\\t forward-word\ncat ~/.cache/wal/sequences &" >> $HOME/.config/fish/config.fish
+mv $HOME/dotfiles/fish/functions/* $HOME/.config/fish/functions/
 
 echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
 
