@@ -12,10 +12,13 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 
 # Window Manager
-pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans picom vim rofi light network-manager-applet
+pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans picom rofi light network-manager-applet
 
 # Terminal
 pacman -S --noconfirm alacritty fish ttf-fira-mono
+
+# VIM
+pacman -S --noconfirm vim nodejs
 
 # Retrieving tools
 pacman -S --noconfirm wget git
