@@ -33,8 +33,13 @@ mv $HOME/dotfiles/.bashrc $HOME/
 
 echo -e "\e[92m\e[1mConfigured the BASH shell.\e[m"
 
+# Configure VIM
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mv $HOME/dotfiles/.vimrc $HOME/
+
+echo -e "\e[92m\e[1mConfigured VIM.\e[m"
+
 # Configure awesome window manager
-mkdir $HOME/.config/
 sudo mv $HOME/dotfiles/awesome $HOME/.config/
 
 if [[ $1  == "powerarrow" ]]
