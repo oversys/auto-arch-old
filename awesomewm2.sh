@@ -38,6 +38,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 mv $HOME/dotfiles/.vimrc $HOME/
 echo "{ \"suggest.enablePreselect\": true }" >> $HOME/.vim/coc-settings.json
 
+mkdir $HOME/.vim/colors
+curl -L https://raw.githubusercontent.com/ErichDonGubler/vim-sublime-monokai/master/colors/sublimemonokai.vim > $HOME/.vim/colors/sublimemonokai.vim
+
 echo -e "\e[92m\e[1mConfigured VIM.\e[m"
 
 # Configure awesome window manager
