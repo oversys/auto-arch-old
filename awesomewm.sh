@@ -15,7 +15,7 @@ pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans picom rofi light network-manager-applet
 
 # Terminal
-pacman -S --noconfirm alacritty zsh ttf-fira-mono
+pacman -S --noconfirm alacritty fish zsh ttf-fira-mono
 
 # VIM
 pacman -S --noconfirm vim nodejs
@@ -81,8 +81,8 @@ sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default
 echo -e "\e[92m\e[1mInstalled cursor theme.\e[m"
 
 # Change shell
-chsh -s /bin/zsh $USERNAME
+chsh -s /bin/fish $USERNAME
 
-echo -e "\e[92m\e[1mInstalled ZSH).\e[m"
+echo -e "\e[92m\e[1mChanged default shell.\e[m"
 
 rm username.txt $0
