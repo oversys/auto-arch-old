@@ -23,10 +23,12 @@ else
 fi
 
 # Configure shell
-mv $HOME/dotfiles/fish/config.fish $HOME/.config/fish/
-mv $HOME/dotfiles/fish/functions/* $HOME/.config/fish/functions/
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 
-echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
+mv $HOME/dotfiles/.zshrc $HOME/
+
+echo -e "\e[92m\e[1mConfigured the ZSH shell.\e[m"
 
 # Configure .bashrc
 mv $HOME/dotfiles/.bashrc $HOME/
