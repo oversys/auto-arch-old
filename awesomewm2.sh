@@ -22,15 +22,21 @@ else
     mv $HOME/dotfiles-two $HOME/dotfiles
 fi
 
-# Configure shell
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+# Configure FISH
+mv $HOME/dotfiles/fish/config.fish $HOME/.config/fish/
+mv $HOME/dotfiles/fish/functions/* $HOME/.config/fish/functions/
 
-mv $HOME/dotfiles/.zshrc $HOME/
+echo -e "\e[92m\e[1mConfigured the FISH shell.\e[m"
 
-echo -e "\e[92m\e[1mConfigured the ZSH shell.\e[m"
+# Configure ZSH
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 
-# Configure .bashrc
+# mv $HOME/dotfiles/.zshrc $HOME/
+
+# echo -e "\e[92m\e[1mConfigured the ZSH shell.\e[m"
+
+# Configure BASH
 mv $HOME/dotfiles/.bashrc $HOME/
 
 echo -e "\e[92m\e[1mConfigured the BASH shell.\e[m"
