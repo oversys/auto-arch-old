@@ -15,7 +15,7 @@ pacman -S --noconfirm lightdm lightdm-webkit2-greeter
 pacman -S --noconfirm awesome xorg-server ttf-dejavu ttf-fira-sans picom rofi light network-manager-applet
 
 # Terminal
-pacman -S --noconfirm alacritty fish zsh ttf-fira-mono
+pacman -S --noconfirm alacritty fish ttf-fira-mono
 
 # VIM
 pacman -S --noconfirm vim nodejs
@@ -32,9 +32,6 @@ systemctl enable bluetooth.service
 
 # Wallpaper + Colorscheme
 pacman -S --noconfirm feh imagemagick python-pywal jq
-
-# Polywins (Polybar script)
-# pacman -S --noconfirm wmctrl xorg-xprop slop
 
 # Cursor
 pacman -S --noconfirm libx11 libxcursor libpng
