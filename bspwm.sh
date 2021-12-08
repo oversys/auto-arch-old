@@ -25,8 +25,12 @@ PKGS=(
 	"pulseaudio-bluetooth" # Bluetooth headset capability
 	"feh" # Change wallpaper
 	"libx11" # X11 Client Library
-	"libxcursor" # Cursor dependencies
-	"libpng" # Cursor dependencies
+	"libxcursor" # Cursor dependency
+	"libpng" # Cursor dependency
+	"xorg-xprop" # Polywins dependency
+	"wmctrl" # Polywins dependency
+	"slop" # Polywins dependency
+	
 )
 
 GPU_PKGS=(
@@ -46,6 +50,7 @@ AUR_PKGS=(
 	"picom-ibhagwan-git" # Picom compositor
 	"polybar" # Polybar
 	"brave-bin" # Brave browser
+	"tty-clock" # Terminal clock
 )
 
 # Update the database
@@ -110,7 +115,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Brave browser.\e[m"
+echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, Brave browser, and tty-clock.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
