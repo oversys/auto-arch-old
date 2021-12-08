@@ -20,6 +20,6 @@ This is my personal Arch Linux installation script. This script will install the
 > **After first boot**
 - Download the third script: `curl -Lo three.sh tinyurl.com/aa-three`
 - Make it executable: `sudo chmod +x three.sh`
-- Run the script: `bash three.sh`
+- Run the script: `zsh three.sh`
 - Wait for the script to configure the system.
 
