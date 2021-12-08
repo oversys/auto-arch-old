@@ -53,7 +53,6 @@ echo -e "\e[92m\e[1mEnter username:\e[m"
 read USERNAME
 useradd -m $USERNAME
 usermod -aG wheel,audio,video $USERNAME
-echo $USERNAME > username.txt
 
 echo -e "\e[92m\e[1mAdded user: \"$USERNAME\".\e[m"
 
