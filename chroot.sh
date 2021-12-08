@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Enable multilib
+printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
+# Enable parallel downloading
+sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
+
+# Install ZSH
+pacman -S zsh
+
 # Set the time zone
 echo -e "\e[92m\e[1mRegion:\e[m"
 read REGION
