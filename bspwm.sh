@@ -1,10 +1,4 @@
-#!/bin/bash
-
-# Enable multilib
-sudo printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-
-# Enable parallel downloading
-sudo sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
+#!/bin/zsh
 
 PKGS=(
 	"lightdm" # Display manager
@@ -17,7 +11,6 @@ PKGS=(
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
 	"alacritty" # Terminal
-	"zsh" # Shell
 	"vim" # Editor
 	"htop" # System monitor
 	"wget" # Retrieve content
