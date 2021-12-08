@@ -13,6 +13,7 @@ PKGS=(
 	"alacritty" # Terminal
 	"vim" # Editor
 	"htop" # System monitor
+	"exa" # ls alternative
 	"wget" # Retrieve content
 	"git" # Git
 	"github-cli" # Github CLI
