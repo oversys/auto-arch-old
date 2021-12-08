@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# Install AUR Packages function
-auri() {
-	for aurpkg in $@
-	do
-		git clone https://aur.archlinux.org/$aurpkg.git
-		cd $aurpkg
-		makepkg -si --noconfirm
-		cd ..
-		rm -rf $aurpkg
-	done
-}
-
 # Enable multilib
 sudo printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
