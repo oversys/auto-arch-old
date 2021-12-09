@@ -6,9 +6,6 @@ printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 # Enable parallel downloading
 sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
-# Install ZSH
-pacman -S zsh
-
 # Set the time zone
 echo -e "\e[92m\e[1mRegion:\e[m"
 read REGION
@@ -39,7 +36,7 @@ echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 echo -e "\e[92m\e[1mSet the hostname.\e[m"
 
 # Get Necessary Boot Packages
-pacman -S --noconfirm grub efibootmgr mtools os-prober dosfstools
+pacman -Syu --noconfirm grub efibootmgr mtools os-prober dosfstools
 
 echo -e "\e[92m\e[1mInstalled boot packages.\e[m"
 mkdir /boot/EFI
@@ -80,6 +77,9 @@ echo -e "\e[92m\e[1mConfigured sudo.\e[m"
 
 # Additional necessary packages
 pacman -S --noconfirm --needed base-devel
+
+# Install ZSH
+pacman -S zsh
 
 echo -e "\e[92m\e[1mInstalled additional necessary packages.\e[m"
 
