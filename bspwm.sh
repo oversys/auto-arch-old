@@ -12,6 +12,8 @@ PKGS=(
 	"flameshot" # Screenshot tool
 	"alacritty" # Terminal
 	"vim" # Editor
+	"nodejs" # CoC.nvim dependency
+	"npm" # CoC.nvim dependency
 	"htop" # System monitor
 	"exa" # ls alternative
 	"wget" # Retrieve content
