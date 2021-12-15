@@ -25,6 +25,8 @@ PKGS=(
 	"bluez" # BlueZ bluetooth management
 	"bluez-utils" # BlueZ utilities
 	"pulseaudio-bluetooth" # Bluetooth headset capability
+	"zip" # Zip files
+	"unzip" # Unzip files
 	"feh" # Change wallpaper
 	"libx11" # X11 Client Library
 	"libxcursor" # Cursor dependency
@@ -32,7 +34,6 @@ PKGS=(
 	"xorg-xprop" # Polywins dependency
 	"wmctrl" # Polywins dependency
 	"slop" # Polywins dependency
-	
 )
 
 GPU_PKGS=(
@@ -51,6 +52,7 @@ AUR_PKGS=(
 	"ttf-poppins" # Poppins font
 	"picom-ibhagwan-git" # Picom compositor
 	"polybar" # Polybar
+	"pfetch" # Pfetch system information tool
 	"brave-bin" # Brave browser
 )
 
@@ -116,7 +118,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Brave browser.\e[m"
+echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, Pfetch, and Brave browser.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
