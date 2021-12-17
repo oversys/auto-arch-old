@@ -7,7 +7,7 @@ PKGS=(
 	"sxhkd" # Hotkey tool
 	"xorg-server" # Dependency of BSPWM
 	"light" # Manage brightness
-	"network-manager-applet" # Manage network
+	"cifs-utils" # Mount Common Internet File System
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
 	"alacritty" # Terminal
