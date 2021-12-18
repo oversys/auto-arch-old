@@ -14,6 +14,7 @@ PKGS=(
 	"vim" # Editor
 	"nodejs" # CoC.nvim dependency
 	"npm" # CoC.nvim dependency
+	"clang" # coc-clangd dependency
 	"htop" # System monitor
 	"exa" # ls alternative
 	"wget" # Retrieve content
