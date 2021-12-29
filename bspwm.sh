@@ -8,6 +8,7 @@ PKGS=(
 	"xorg-server" # Dependency of BSPWM
 	"light" # Manage brightness
 	"cifs-utils" # Mount Common Internet File System
+	"ntfs-3g" # Mount New Technology File System
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
 	"alacritty" # Terminal
