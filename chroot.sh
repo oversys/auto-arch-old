@@ -84,7 +84,7 @@ pacman -S zsh
 echo -e "\e[92m\e[1mInstalled additional necessary packages.\e[m"
 
 # Install Network Packages
-pacman -S --noconfirm networkmanager iw wpa_supplicant dialog netctl
+pacman -S --noconfirm networkmanager iw wpa_supplicant dialog
 systemctl enable NetworkManager.service
 
 echo -e "\e[92m\e[1mInstalled network packages.\e[m"
