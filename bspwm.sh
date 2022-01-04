@@ -180,6 +180,11 @@ done
 
 echo -e "\e[92m\e[1mConfigured Polybar.\e[m"
 
+# Configure Firefox
+mv $HOME/dotfiles/prefs.js $HOME/
+
+echo -e "\e[92m\e[1mMoved Firefox configuration to the home directory. \e[92m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
+
 echo -e "\e[92m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
 
 rm -rf $HOME/dotfiles $0
