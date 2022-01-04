@@ -20,6 +20,7 @@ PKGS=(
 	"exa" # ls alternative
 	"wget" # Retrieve content
 	"git" # Git
+	"man" # Manual
 	"github-cli" # Github CLI
 	"pulseaudio" # PulseAudio
 	"pulsemixer" # Manage audio
