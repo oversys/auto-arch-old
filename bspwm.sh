@@ -27,6 +27,7 @@ PKGS=(
 	"bluez" # BlueZ bluetooth management
 	"bluez-utils" # BlueZ utilities
 	"pulseaudio-bluetooth" # Bluetooth headset capability
+	"firefox" Web Browser
 	"zip" # Zip files
 	"unzip" # Unzip files
 	"feh" # Change wallpaper
@@ -55,7 +56,6 @@ AUR_PKGS=(
 	"picom-ibhagwan-git" # Picom compositor
 	"polybar" # Polybar
 	"pfetch" # Pfetch system information tool
-	"brave-bin" # Brave browser
 )
 
 # Update the database
@@ -120,7 +120,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, Pfetch, and Brave browser.\e[m"
+echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
