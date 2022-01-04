@@ -133,7 +133,10 @@ sudo mv $HOME/dotfiles/wallpapers $HOME/.config/
 
 sudo chmod +x $HOME/.config/bspwm/bspwmrc
 sudo chmod +x $HOME/.config/sxhkd/sxhkdrc
-sudo chmod +x $HOME/.config/sxhkd/move_window.sh
+
+for script in $HOME/.config/sxhkd/scripts/*; do
+    sudo chmod +x $script
+done
 
 # Configure ZSH
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
@@ -172,7 +175,7 @@ echo -e "\e[92m\e[1mConfigured Picom.\e[m"
 sudo mv $HOME/dotfiles/polybar $HOME/.config/
 
 for script in $HOME/.config/polybar/scripts/*; do
-	sudo chmod +x $script
+    sudo chmod +x $script
 done
 
 echo -e "\e[92m\e[1mConfigured Polybar.\e[m"
