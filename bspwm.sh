@@ -52,6 +52,7 @@ GPU_PKGS=(
 )
 
 AUR_PKGS=(
+	"rtl8821cu-morrownr-dkms-git" # RTL8821CU Network Adapter Driver
 	"nerd-fonts-jetbrains-mono" # JetBrains Mono Nerd Font
 	"ttf-poppins" # Poppins font
 	"picom-ibhagwan-git" # Picom compositor
@@ -121,7 +122,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[92m\e[1mInstalled JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
+echo -e "\e[92m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
