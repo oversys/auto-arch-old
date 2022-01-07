@@ -76,7 +76,7 @@ echo "$USERNAME  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 echo -e "\e[92m\e[1mConfigured sudo.\e[m"
 
 # Additional necessary packages
-pacman -S --noconfirm --needed base-devel
+pacman -S --noconfirm --needed linux-headers base-devel dkms
 
 # Install ZSH
 pacman -S zsh
