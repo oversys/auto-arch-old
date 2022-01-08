@@ -186,12 +186,9 @@ done
 echo -e "\e[32m\e[1mConfigured Polybar.\e[m"
 
 # Configure Firefox
-mv $HOME/dotfiles/prefs.js $HOME/
-
-printf "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/\nhttps://addons.mozilla.org/en-US/firefox/addon/ctrl-number-to-switch-tabs/\nhttps://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/" > extensions.txt
-
-echo -e "\e[32m\e[1mMoved Firefox files to the home directory. Extension links are in the \"extensions.txt\" file. \e[31m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
-
-echo -e "\e[32m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
+# mv $HOME/dotfiles/prefs.js $HOME/
+# printf "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/\nhttps://addons.mozilla.org/en-US/firefox/addon/ctrl-number-to-switch-tabs/\nhttps://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/" > extensions.txt
+# echo -e "\e[32m\e[1mMoved Firefox files to the home directory. Extension links are in the \"extensions.txt\" file. \e[31m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
+# echo -e "\e[32m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
 
 rm -rf $HOME/dotfiles $0
