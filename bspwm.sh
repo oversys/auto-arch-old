@@ -18,6 +18,7 @@ PKGS=(
 	"clang" # coc-clangd dependency
 	"htop" # System monitor
 	"exa" # ls alternative
+	"bat" # cat alternative
 	"wget" # Retrieve content
 	"git" # Git
 	"man" # Manual
