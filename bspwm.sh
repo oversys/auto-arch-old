@@ -29,7 +29,6 @@ PKGS=(
 	"bluez" # BlueZ bluetooth management
 	"bluez-utils" # BlueZ utilities
 	"pulseaudio-bluetooth" # Bluetooth headset capability
-	"firefox" # Web Browser
 	"zip" # Zip files
 	"unzip" # Unzip files
 	"feh" # Change wallpaper
@@ -59,6 +58,7 @@ AUR_PKGS=(
 	"nerd-fonts-jetbrains-mono" # JetBrains Mono Nerd Font
 	"ttf-poppins" # Poppins font
 	"picom-ibhagwan-git" # Picom compositor
+	"brave-bin" # Brave Browser
 	"polybar" # Polybar
 	"pfetch" # Pfetch system information tool
 )
@@ -125,7 +125,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[32m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
+echo -e "\e[32m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Brave browser, Polybar, and Pfetch.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
