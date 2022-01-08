@@ -6,6 +6,9 @@ printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 # Enable parallel downloading
 sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
+# Enable parallel compilation
+sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
+
 # Set the time zone
 echo -e "\e[32m\e[1mRegion:\e[m"
 read REGION
