@@ -9,6 +9,14 @@ sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 # Enable parallel compilation
 sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
 
+# Additional necessary packages
+pacman -S --noconfirm --needed linux-headers base-devel dkms intel-ucode
+
+# Install ZSH
+pacman -S zsh
+
+echo -e "\e[32m\e[1mInstalled additional necessary packages.\e[m"
+
 # Set the time zone
 echo -e "\e[32m\e[1mRegion:\e[m"
 read REGION
@@ -77,14 +85,6 @@ pacman -S --noconfirm sudo
 echo "$USERNAME  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 echo -e "\e[32m\e[1mConfigured sudo.\e[m"
-
-# Additional necessary packages
-pacman -S --noconfirm --needed linux-headers base-devel dkms
-
-# Install ZSH
-pacman -S zsh
-
-echo -e "\e[32m\e[1mInstalled additional necessary packages.\e[m"
 
 # Install Network Packages
 pacman -S --noconfirm networkmanager iw wpa_supplicant dialog
