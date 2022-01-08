@@ -70,7 +70,7 @@ sudo pacman -S --noconfirm $PKGS
 # Install AMD GPU drivers
 sudo pacman -S --noconfirm $GPU_PKGS
 
-echo -e "\e[92m\e[1mInstalled packages.\e[m"
+echo -e "\e[32m\e[1mInstalled packages.\e[m"
 
 # Enable bluetooth service
 sudo systemctl enable bluetooth.service
@@ -91,13 +91,13 @@ sudo sed -i "s/# user-session = Session to load for users/user-session = bspwm/g
 sudo sed -i "s/#user-session=default/user-session=bspwm/g" /etc/lightdm/lightdm.conf
 sudo systemctl enable lightdm.service
 
-echo -e "\e[92m\e[1mEnabled display manager.\e[m"
+echo -e "\e[32m\e[1mEnabled display manager.\e[m"
 
 # Fix default user icon
 sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
 sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER/g" /var/lib/AccountsService/users/$USER
 
-echo -e "\e[92m\e[1mFixed default user icon.\e[m"
+echo -e "\e[32m\e[1mFixed default user icon.\e[m"
 
 # Install cursor
 wget https://github.com/BetaLost/Arch-Install-Script/raw/main/macOSBigSur.tar.gz
@@ -107,12 +107,12 @@ rm -rf macOSBigSur.tar.gz
 
 sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
 
-echo -e "\e[92m\e[1mInstalled cursor theme.\e[m"
+echo -e "\e[32m\e[1mInstalled cursor theme.\e[m"
 
 # Change shell
 sudo chsh -s /bin/zsh $USER
 
-echo -e "\e[92m\e[1mChanged default shell.\e[m"
+echo -e "\e[32m\e[1mChanged default shell.\e[m"
 
 # Install AUR packages
 for aurpkg in $AUR_PKGS; do
@@ -123,7 +123,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[92m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
+echo -e "\e[32m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, and Pfetch.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
@@ -146,33 +146,33 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-au
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 mv $HOME/dotfiles/.zshrc $HOME/
 
-echo -e "\e[92m\e[1mConfigured the ZSH shell.\e[m"
+echo -e "\e[32m\e[1mConfigured the ZSH shell.\e[m"
 
 # Configure BASH
 mv $HOME/dotfiles/.bashrc $HOME/
 
-echo -e "\e[92m\e[1mConfigured the BASH shell.\e[m"
+echo -e "\e[32m\e[1mConfigured the BASH shell.\e[m"
 
 # Configure VIM
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/.vimrc $HOME/
 
-echo -e "\e[92m\e[1mConfigured VIM.\e[m"
+echo -e "\e[32m\e[1mConfigured VIM.\e[m"
 
 # Configure Rofi
 sudo mv $HOME/dotfiles/rofi $HOME/.config/
 
-echo -e "\e[92m\e[1mConfigured Rofi.\e[m"
+echo -e "\e[32m\e[1mConfigured Rofi.\e[m"
 
 # Configure Alacritty
 sudo mv $HOME/dotfiles/alacritty $HOME/.config/
 
-echo -e "\e[92m\e[1mConfigured Alacritty.\e[m"
+echo -e "\e[32m\e[1mConfigured Alacritty.\e[m"
 
 # Configure Picom 
 sudo mv $HOME/dotfiles/picom $HOME/.config/
 
-echo -e "\e[92m\e[1mConfigured Picom.\e[m"
+echo -e "\e[32m\e[1mConfigured Picom.\e[m"
 
 # Configure Polybar
 sudo mv $HOME/dotfiles/polybar $HOME/.config/
@@ -181,13 +181,15 @@ for script in $HOME/.config/polybar/scripts/*; do
     sudo chmod +x $script
 done
 
-echo -e "\e[92m\e[1mConfigured Polybar.\e[m"
+echo -e "\e[32m\e[1mConfigured Polybar.\e[m"
 
 # Configure Firefox
 mv $HOME/dotfiles/prefs.js $HOME/
 
-echo -e "\e[92m\e[1mMoved Firefox configuration to the home directory. \e[92m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
+printf "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/\nhttps://addons.mozilla.org/en-US/firefox/addon/ctrl-number-to-switch-tabs/\nhttps://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/" > extensions.txt
 
-echo -e "\e[92m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
+echo -e "\e[32m\e[1mMoved Firefox files to the home directory. Extension links are in the \"extensions.txt\" file. \e[31m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
+
+echo -e "\e[32m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
 
 rm -rf $HOME/dotfiles $0
