@@ -28,10 +28,11 @@ PKGS=(
 	"bluez" # BlueZ bluetooth management
 	"bluez-utils" # BlueZ utilities
 	"pulseaudio-bluetooth" # Bluetooth headset capability
-	"firefox" Web Browser
+	"firefox" # Web Browser
 	"zip" # Zip files
 	"unzip" # Unzip files
 	"feh" # Change wallpaper
+	"python-pip" # Install Python modules/packages
 	"libx11" # X11 Client Library
 	"libxcursor" # Cursor dependency
 	"libpng" # Cursor dependency
