@@ -34,6 +34,7 @@ PKGS=(
 	"unzip" # Unzip files
 	"feh" # Change wallpaper
 	"python-pip" # Install Python modules/packages
+	"xclip" # Copy to clipboard
 	"libx11" # X11 Client Library
 	"libxcursor" # Cursor dependency
 	"libpng" # Cursor dependency
