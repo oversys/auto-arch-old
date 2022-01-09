@@ -7,10 +7,10 @@ printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
 # Enable parallel compilation
-sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
+sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
 
 # Additional necessary packages
-pacman -S --noconfirm --needed linux-headers base-devel dkms intel-ucode
+pacman -Syy --noconfirm --needed linux-headers base-devel dkms intel-ucode
 
 # Install ZSH
 pacman -S zsh
