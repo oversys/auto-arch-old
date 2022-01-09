@@ -34,6 +34,7 @@ PKGS=(
 	"feh" # Change wallpaper
 	"python-pip" # Install Python modules/packages
 	"xclip" # Copy to clipboard
+	"ttf-joypixels" # Emoji font
 	"libx11" # X11 Client Library
 	"libxcursor" # Cursor dependency
 	"libpng" # Cursor dependency
