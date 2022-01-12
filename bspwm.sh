@@ -59,9 +59,10 @@ AUR_PKGS=(
 	"nerd-fonts-jetbrains-mono" # JetBrains Mono Nerd Font
 	"ttf-poppins" # Poppins font
 	"picom-ibhagwan-git" # Picom compositor
-	"brave-bin" # Brave Browser
 	"polybar" # Polybar
-	"pfetch" # Pfetch system information tool
+	"brave-bin" # Brave Browser
+	"btop" # htop alternative
+	"nerdfetch" # System information tool
 )
 
 # Update the database
@@ -126,7 +127,7 @@ for aurpkg in $AUR_PKGS; do
 	rm -rf $aurpkg
 done
 
-echo -e "\e[32m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Brave browser, Polybar, and Pfetch.\e[m"
+echo -e "\e[32m\e[1mInstalled RTL8821CU Network Adapter Driver, JetBrains Mono Nerd Font, Poppins Font, Picom compositor, Polybar, Brave browser, btop, and NerdFetch.\e[m"
 
 # Download dotfiles
 git clone https://github.com/BetaLost/dotfiles.git
@@ -174,9 +175,9 @@ sudo mv $HOME/dotfiles/kitty $HOME/.config/
 echo -e "\e[32m\e[1mConfigured Kitty.\e[m"
 
 # Configure Alacritty
-sudo mv $HOME/dotfiles/alacritty $HOME/.config/
-
-echo -e "\e[32m\e[1mConfigured Alacritty.\e[m"
+# sudo mv $HOME/dotfiles/alacritty $HOME/.config/
+#
+# echo -e "\e[32m\e[1mConfigured Alacritty.\e[m"
 
 # Configure Picom 
 sudo mv $HOME/dotfiles/picom $HOME/.config/
