@@ -11,7 +11,7 @@ PKGS=(
 	"ntfs-3g" # Mount New Technology File System
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
-	"alacritty" # Terminal
+	"kitty" # Terminal Emulator
 	"vim" # Editor
 	"nodejs" # CoC.nvim dependency
 	"npm" # CoC.nvim dependency
