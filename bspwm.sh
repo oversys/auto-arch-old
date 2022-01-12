@@ -168,6 +168,11 @@ sudo mv $HOME/dotfiles/rofi $HOME/.config/
 
 echo -e "\e[32m\e[1mConfigured Rofi.\e[m"
 
+# Configure Kitty
+sudo mv $HOME/dotfiles/kitty $HOME/.config/
+
+echo -e "\e[32m\e[1mConfigured Kitty.\e[m"
+
 # Configure Alacritty
 sudo mv $HOME/dotfiles/alacritty $HOME/.config/
 
