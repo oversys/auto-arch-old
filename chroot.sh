@@ -82,7 +82,7 @@ passwd $USERNAME
 
 # Configure Sudo
 pacman -S --noconfirm sudo
-echo "$USERNAME  ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "$USERNAME  ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 echo -e "\e[32m\e[1mConfigured sudo.\e[m"
 
