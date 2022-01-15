@@ -138,12 +138,8 @@ sudo mv $HOME/dotfiles/bspwm $HOME/.config/
 sudo mv $HOME/dotfiles/sxhkd $HOME/.config/
 sudo mv $HOME/dotfiles/wallpapers $HOME/.config/
 
-sudo chmod +x $HOME/.config/bspwm/bspwmrc
-sudo chmod +x $HOME/.config/sxhkd/sxhkdrc
-
-for script in $HOME/.config/sxhkd/scripts/*; do
-    sudo chmod +x $script
-done
+find $HOME/.config/bspwm -type f -exec chmod +x {} \;
+find $HOME/.config/sxhkd -type f -exec chmod +x {} \;
 
 # Configure ZSH
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
@@ -160,7 +156,7 @@ echo -e "\e[32m\e[1mConfigured the BASH shell.\e[m"
 # Configure VIM
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/.vimrc $HOME/
-vim +PlugInstall +qa
+vim +PlugInstall +CocInstall +qa
 
 echo -e "\e[32m\e[1mConfigured VIM.\e[m"
 
