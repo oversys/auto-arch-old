@@ -54,10 +54,7 @@ echo -e "\e[32m\e[1mInstalled boot packages.\e[m"
 mkdir /boot/EFI
 
 # Read Selected Boot Partition
-while IFS= read -r line
-do
-    BOOT_PART=$line
-done < boot_part.txt
+BOOT_PART=$(cat boot_part.txt)
 
 # Install GRUB
 mount /dev/$BOOT_PART /boot/EFI
