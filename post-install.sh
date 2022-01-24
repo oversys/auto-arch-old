@@ -113,6 +113,16 @@ sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default
 
 echo -e "\e[32m\e[1mInstalled cursor theme.\e[m"
 
+# Install Arabic font
+wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip
+unzip khebrat-musamim.zip
+sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
+
+sudo mv $HOME/dotfiles/fonts.conf /etc/fonts/
+sudo cp /etc/fonts/fonts.conf /etc/fonts/local.conf
+
+echo -e "\e[32m\e[1mChanged default Arabic font.\e[m"
+
 # Change shell
 sudo chsh -s /bin/zsh $USER
 
