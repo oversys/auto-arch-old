@@ -2,7 +2,7 @@
 
 clear
 
-echo "Auto-arch script started..."
+echo -e "\e[32m\e[1mAuto-arch script started...\e[m"
 
 # Set Font (bigger text)
 setfont ter-v32n
@@ -17,4 +17,4 @@ USERNAME=$(cat /mnt/username.txt)
 rm /mnt/username.txt
 arch-chroot /mnt "curl -Lo post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh; su -c \"zsh post-install.sh\" $USERNAME -"
 
-echo "Auto-arch script completed!"
+echo -e "\e[32m\e[1mAuto-arch script completed!\e[m"
