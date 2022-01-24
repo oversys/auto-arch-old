@@ -92,4 +92,5 @@ echo -e "\e[32m\e[1mInstalled network packages.\e[m"
 
 # Done
 echo -e "\e[32m\e[1mBasic installation complete.\e[m"
+echo $USERNAME > username.txt
 rm boot_part.txt $0
