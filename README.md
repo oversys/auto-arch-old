@@ -1,6 +1,8 @@
 # Auto Arch
 This is my personal Arch Linux installation script. This script will install the BSPWM tiling window manager and the Alacritty terminal emulator.
 
+(curl -Lo aa tinyurl.com/auto-arch)
+
 # Instructions:
 > **Before chrooting into the system**
 - Partition the disk using the tool of your choice (fdisk, cfdisk, etc)
