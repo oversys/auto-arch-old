@@ -15,6 +15,6 @@ arch-chroot /mnt "curl -Lo chroot.sh https://raw.githubusercontent.com/BetaLost/
 
 USERNAME=$(cat /mnt/username.txt)
 rm /mnt/username.txt
-arch-chroot /mnt "curl -Lo post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh; su -c \"zsh post-install.sh\" $USERNAME -"
+arch-chroot /mnt "curl -Lo post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh; echo \"Running script as \"$USERNAME\"..\"; su -c \"zsh post-install.sh\" $USERNAME -"
 
 echo -e "\e[32m\e[1mAuto-arch script completed!\e[m"
