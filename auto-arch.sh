@@ -8,10 +8,13 @@ echo "Auto-arch script started..."
 setfont ter-v32n
 echo -e "\e[32m\e[1mChanged Font.\e[m"
 
+curl -Lo pre-chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/pre-chroot.sh
 bash pre-chroot.sh
-arch-chroot /mnt "bash chroot.sh"
+
+arch-chroot /mnt "curl -Lo chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/chroot.sh; bash chroot.sh"
+
 USERNAME=$(cat /mnt/username.txt)
 rm /mnt/username.txt
-arch-chroot /mnt "su -c \"zsh post-install.sh\" $USERNAME -"
+arch-chroot /mnt "curl -Lo post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh; su -c \"zsh post-install.sh\" $USERNAME -"
 
-echo "Done!"
+echo "Auto-arch script completed!"
