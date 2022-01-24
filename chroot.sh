@@ -29,6 +29,7 @@ echo -e "\e[32m\e[1mSet the time zone.\e[m"
 
 # Localization
 sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen
+sed -i "s/#ar_SA.UTF-8/ar_SA.UTF-8/g" /etc/locale.gen
 locale-gen
 
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
