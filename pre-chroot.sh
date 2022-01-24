@@ -1,11 +1,5 @@
 #!/bin/bash
 
-clear
-
-# Set Font (bigger text)
-setfont ter-v32n
-echo -e "\e[32m\e[1mChanged Font.\e[m"
-
 # Update the System Clock
 timedatectl set-ntp true
 wait
