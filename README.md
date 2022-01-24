@@ -1,5 +1,5 @@
 # Auto Arch
-This is my personal Arch Linux installation script. This script will install the BSPWM tiling window manager and the Alacritty terminal emulator.
+This is my personal Arch Linux installation script. This script will install the BSPWM tiling window manager and the Kitty terminal emulator.
 
 (curl -Lo aa tinyurl.com/auto-arch)
 
