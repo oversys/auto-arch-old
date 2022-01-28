@@ -14,6 +14,8 @@ mkfs.fat -F32 /dev/$BOOT_PART
 echo -e "\e[32m\e[1mFormatted Boot Partition.\e[m"
 mkfs.ext4 /dev/$ROOT_PART
 echo -e "\e[32m\e[1mFormatted Root Partition.\e[m"
+
+# Mount root partition
 mount /dev/$ROOT_PART /mnt
 echo -e "\e[32m\e[1mMounted \"/dev/$ROOT_PART /mnt\".\e[m"
 
