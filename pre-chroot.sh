@@ -30,9 +30,6 @@ echo -e "\e[32m\e[1mInstalled base system.\e[m"
 genfstab -U /mnt >> /mnt/etc/fstab
 echo -e "\e[32m\e[1mGenerated fstab file.\e[m"
 
-# Save Boot Partition Name
-echo $BOOT_PART > /mnt/boot_part.txt
-
 # Part One Done
 echo -e "\e[32m\e[1mPre-Chroot installation complete.\e[m"
 rm $0
