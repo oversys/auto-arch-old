@@ -171,7 +171,6 @@ echo -e "\e[32m\e[1mConfigured the BASH shell.\e[m"
 # Configure VIM
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/.vimrc $HOME/
-vim +PlugInstall +CocInstall +qa
 
 echo -e "\e[32m\e[1mConfigured VIM.\e[m"
 
