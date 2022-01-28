@@ -26,8 +26,6 @@ PKGS=(
 	"pulseaudio" # PulseAudio
 	"pulsemixer" # Manage audio
 	"alsa-utils" # Alsa utilities
-	"bluez" # BlueZ bluetooth management
-	"bluez-utils" # BlueZ utilities
 	"pulseaudio-bluetooth" # Bluetooth headset capability
 	"zip" # Zip files
 	"unzip" # Unzip files
@@ -76,13 +74,6 @@ sudo pacman -S --noconfirm $GPU_PKGS
 
 echo -e "\e[32m\e[1mInstalled packages.\e[m"
 
-# Enable bluetooth service
-sudo systemctl enable bluetooth.service
-
-# Set permissions for brightness and mute button led
-sudo chmod a+rw /sys/class/backlight/intel_backlight/brightness
-sudo chmod a+rw /sys/class/leds/hda\:\:mute/brightness
-
 # Install LightDM Aether theme
 git clone https://github.com/NoiSek/Aether.git
 sudo cp --recursive Aether /usr/share/lightdm-webkit/themes/
@@ -98,8 +89,8 @@ sudo systemctl enable lightdm.service
 echo -e "\e[32m\e[1mEnabled display manager.\e[m"
 
 # Fix default user icon
-sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
-sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER/g" /var/lib/AccountsService/users/$USER
+# sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
+# sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER/g" /var/lib/AccountsService/users/$USER
 
 echo -e "\e[32m\e[1mFixed default user icon.\e[m"
 
@@ -116,6 +107,7 @@ echo -e "\e[32m\e[1mInstalled cursor theme.\e[m"
 # Install Arabic font
 wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip
 unzip khebrat-musamim.zip
+rm khebrat-musamim.zip
 sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
 
 sudo mv $HOME/dotfiles/fonts.conf /etc/fonts/
