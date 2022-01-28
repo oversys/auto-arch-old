@@ -128,8 +128,8 @@ wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar
 sudo mkdir -p /boot/grub/themes
 sudo mkdir /boot/grub/themes/arch
 sudo mv arch.tar /boot/grub/themes/arch/
-sudo tar xvf /boot/grub/themes/arch.tar
-sudo rm /boot/grub/themes/arch.tar
+sudo tar xvf /boot/grub/themes/arch/arch.tar -C /boot/grub/themes/arch/
+sudo rm /boot/grub/themes/arch/arch.tar
 sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
 sudo sed -i "s/#GRUB_THEME=\"path\/to\/gfxtheme\"/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
