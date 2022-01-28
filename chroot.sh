@@ -59,6 +59,7 @@ BOOT_PART=$(cat boot_part.txt)
 # Install GRUB
 mount /dev/$BOOT_PART /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck
+sed -i "s/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\e[32m\e[1mInstalled GRUB.\e[m"
