@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Parse Variables
+REGION=$1
+CITY=$2
+HOSTNAME=$3
+USERNAME=$4
+ROOT_PASSWORD=$5
+USER_PASSWORD=$6
+
 # Enable multilib
 printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
@@ -17,12 +25,7 @@ pacman -S --noconfirm zsh
 
 echo -e "\e[32m\e[1mInstalled additional necessary packages.\e[m"
 
-# Set the time zone
-echo -e "\e[32m\e[1mRegion:\e[m"
-read REGION
-echo -e "\e[32m\e[1mCity:\e[m"
-read CITY
-
+# Set time zone
 ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
 hwclock --systohc
 echo -e "\e[32m\e[1mSet the time zone.\e[m"
@@ -37,9 +40,6 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo -e "\e[32m\e[1mSet the system locales.\e[m"
 
 # Hosts
-echo -e "\e[32m\e[1mEnter hostname:\e[m"
-read HOSTNAME
-
 echo $HOSTNAME > /etc/hostname
 echo "127.0.0.1  localhost" >> /etc/hosts
 echo "::1        localhost" >> /etc/hosts
@@ -65,19 +65,16 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\e[32m\e[1mInstalled GRUB.\e[m"
 
 # Adding a user
-echo -e "\e[32m\e[1mEnter username:\e[m"
-read USERNAME
 useradd -m $USERNAME
 usermod -aG wheel,audio,video $USERNAME
 
 echo -e "\e[32m\e[1mAdded user: \"$USERNAME\".\e[m"
 
-# Setting Passwords
-echo -e "\e[32m\e[1mSet password for ROOT:\e[m"
-passwd
+# Set Root Password
+printf "$ROOT_PASSWORD\n$ROOT_PASSWORD" | passwd --stdin
 
-echo -e "\e[32m\e[1mSet password for \"$USERNAME\":\e[m"
-passwd $USERNAME
+# Set User Password
+printf "$USER_PASSWORD\n$USER_PASSWORD" | passwd --stdin $USERNAME
 
 # Configure Sudo
 pacman -S --noconfirm sudo
@@ -93,5 +90,5 @@ echo -e "\e[32m\e[1mInstalled network packages.\e[m"
 
 # Done
 echo -e "\e[32m\e[1mBasic installation complete.\e[m"
-echo $USERNAME > username.txt
+
 rm boot_part.txt $0
