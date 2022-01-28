@@ -13,7 +13,7 @@ sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
 pacman -Syy --noconfirm --needed linux-headers base-devel dkms intel-ucode
 
 # Install ZSH
-pacman -S zsh
+pacman -S --noconfirm zsh
 
 echo -e "\e[32m\e[1mInstalled additional necessary packages.\e[m"
 
