@@ -123,6 +123,19 @@ sudo cp /etc/fonts/fonts.conf /etc/fonts/local.conf
 
 echo -e "\e[32m\e[1mChanged default Arabic font.\e[m"
 
+# Install GRUB theme
+wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar
+sudo mkdir -p /boot/grub/themes
+sudo mkdir /boot/grub/themes/arch
+sudo mv arch.tar /boot/grub/themes/arch/
+sudo tar xvf /boot/grub/themes/arch.tar
+sudo rm /boot/grub/themes/arch.tar
+sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
+sudo sed -i "s/#GRUB_THEME=\"path\/to\/gfxtheme\"/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+echo -e "\e[32m\e[1mInstalled GRUB theme.\e[m"
+
 # Change shell
 sudo chsh -s /bin/zsh $USER
 
@@ -199,10 +212,6 @@ done
 
 echo -e "\e[32m\e[1mConfigured Polybar.\e[m"
 
-# Configure Firefox
-# mv $HOME/dotfiles/prefs.js $HOME/
-# printf "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/\nhttps://addons.mozilla.org/en-US/firefox/addon/ctrl-number-to-switch-tabs/\nhttps://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/" > extensions.txt
-# echo -e "\e[32m\e[1mMoved Firefox files to the home directory. Extension links are in the \"extensions.txt\" file. \e[31m\e[1mREMEMBER TO MOVE IT TO THE DEFAULT PROFILE FOLDER (~/.mozilla/firefox/PROFILE-FOLDER/).\e[m"
 # echo -e "\e[32m\e[1mConfigured desktop. Restart this machine to see the changes.\e[m"
 
 rm -rf $HOME/dotfiles $0
