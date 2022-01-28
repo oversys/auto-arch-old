@@ -7,6 +7,7 @@ HOSTNAME=$3
 USERNAME=$4
 ROOT_PASSWORD=$5
 USER_PASSWORD=$6
+BOOT_PART=$7
 
 # Enable multilib
 printf "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
@@ -53,9 +54,6 @@ pacman -Syu --noconfirm grub efibootmgr mtools os-prober dosfstools
 echo -e "\e[32m\e[1mInstalled boot packages.\e[m"
 mkdir /boot/EFI
 
-# Read Selected Boot Partition
-BOOT_PART=$(cat boot_part.txt)
-
 # Install GRUB
 mount /dev/$BOOT_PART /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck
@@ -91,4 +89,4 @@ echo -e "\e[32m\e[1mInstalled network packages.\e[m"
 # Done
 echo -e "\e[32m\e[1mBasic installation complete.\e[m"
 
-rm boot_part.txt $0
+rm $0
