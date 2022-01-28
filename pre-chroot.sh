@@ -1,36 +1,13 @@
 #!/bin/bash
 
+# Parse Variables
+BOOT_PART=$1
+ROOT_PART=$2
+
 # Update the System Clock
 timedatectl set-ntp true
 wait
 echo -e "\e[32m\e[1mUpdated the System Clock.\e[m"
-
-# Print partitions
-echo -e "\e[32m\e[1mCurrent partitions:\e[m"
-fdisk -l /dev/sda
-
-# Get Boot Partition
-echo -e "\e[32m\e[1mBoot Partition (sdaX):\e[m"
-read BOOT_PART
-if [[ $BOOT_PART  =~ "sda" ]]
-then
-    echo -e "\e[32m\e[1mValid boot partition.\e[m"
-    echo $BOOT_PART > boot_part.txt
-else
-    echo -e "\e[91m\e[1mInvalid input.\e[m"
-    exit
-fi
-
-# Get Root Partition
-echo -e "\e[32m\e[1mRoot Partition (sdaX):\e[m"
-read ROOT_PART
-if [[ $ROOT_PART =~ "sda" ]]
-then
-    echo -e "\e[32m\e[1mValid root partition.\e[m"
-else
-    echo -e "\e[91m\e[1mInvalid input.\e[m"
-    exit
-fi
 
 # Format Partitions
 mkfs.fat -F32 /dev/$BOOT_PART
@@ -51,8 +28,8 @@ echo -e "\e[32m\e[1mInstalled base system.\e[m"
 genfstab -U /mnt >> /mnt/etc/fstab
 echo -e "\e[32m\e[1mGenerated fstab file.\e[m"
 
-# Move Boot Partition Name
-mv boot_part.txt /mnt
+# Save Boot Partition Name
+echo $BOOT_PART > /mnt/boot_part.txt
 
 # Part One Done
 echo -e "\e[32m\e[1mPre-Chroot installation complete.\e[m"
