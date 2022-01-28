@@ -69,10 +69,10 @@ usermod -aG wheel,audio,video $USERNAME
 echo -e "\e[32m\e[1mAdded user: \"$USERNAME\".\e[m"
 
 # Set Root Password
-printf "$ROOT_PASSWORD\n$ROOT_PASSWORD" | passwd --stdin
+printf "$ROOT_PASSWORD\n$ROOT_PASSWORD" | passwd
 
 # Set User Password
-printf "$USER_PASSWORD\n$USER_PASSWORD" | passwd --stdin $USERNAME
+printf "$USER_PASSWORD\n$USER_PASSWORD" | passwd $USERNAME
 
 # Configure Sudo
 pacman -S --noconfirm sudo
@@ -85,6 +85,16 @@ pacman -S --noconfirm networkmanager iw wpa_supplicant dialog
 systemctl enable NetworkManager.service
 
 echo -e "\e[32m\e[1mInstalled network packages.\e[m"
+
+# Install Bluetooth Packages
+pacman -s --noconfirm bluez bluez-utils
+sudo systemctl enable bluetooth.service
+
+echo -e "\e[32m\e[1mInstalled bluetooth packages.\e[m"
+
+# Set permissions for brightness and mute button led
+chmod a+rw /sys/class/backlight/intel_backlight/brightness
+chmod a+rw /sys/class/leds/hda\:\:mute/brightness
 
 # Done
 echo -e "\e[32m\e[1mBasic installation complete.\e[m"
