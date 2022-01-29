@@ -126,11 +126,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\e[32m\e[1mInstalled GRUB theme.\e[m"
 
-# Change shell
-sudo chsh -s /bin/zsh $USER
-
-echo -e "\e[32m\e[1mChanged default shell.\e[m"
-
 # Install AUR packages
 for aurpkg in $AUR_PKGS; do
 	git clone https://aur.archlinux.org/$aurpkg.git
