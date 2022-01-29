@@ -63,11 +63,9 @@ AUR_PKGS=(
 	"nerdfetch" # System information tool
 )
 
-# Update the database
-sudo pacman -Syu --noconfirm
-
 # Install packages
-sudo pacman -S --noconfirm $PKGS
+sudo pacman -Syu --noconfirm $PKGS
+# ${#PKGS[@]}
 
 # Install AMD GPU drivers
 sudo pacman -S --noconfirm $GPU_PKGS
