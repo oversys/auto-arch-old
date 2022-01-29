@@ -23,7 +23,7 @@ echo -e "\e[32m\e[1mMounted \"/dev/$ROOT_PART /mnt\".\e[m"
 sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
 # Install System
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode
 echo -e "\e[32m\e[1mInstalled base system.\e[m"
 
 # Generate fstab file
