@@ -39,18 +39,14 @@ fi
 # Region
 clear
 echo -e "\e[32m\e[1mValid Regions:\e[m" 
-for file in /usr/share/zoneinfo/*; do
-    echo $file | awk '{print NR, $0}'
-done
+ls /usr/share/zoneinfo/
 echo -e "\e[32m\e[1mRegion:\e[m"
 read REGION
 
 # City
 clear
 echo -e "\e[32m\e[1mValid Cities:\e[m" 
-for file in /usr/share/zoneinfo/$REGION/*; do
-    echo $file | awk '{print NR, $0}'
-done
+ls /usr/share/zoneinfo/$REGION/
 echo -e "\e[32m\e[1mCity:\e[m"
 read CITY
 
