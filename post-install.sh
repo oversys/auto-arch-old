@@ -121,7 +121,7 @@ sudo mv arch.tar /boot/grub/themes/arch/
 sudo tar xvf /boot/grub/themes/arch/arch.tar -C /boot/grub/themes/arch/
 sudo rm /boot/grub/themes/arch/arch.tar
 sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
-sudo sed -i "s/#GRUB_THEME=\"path\/to\/gfxtheme\"/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
+sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\e[32m\e[1mInstalled GRUB theme.\e[m"
