@@ -18,13 +18,10 @@ sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 # Enable parallel compilation
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
 
-# Additional necessary packages
-pacman -Syy --noconfirm --needed linux-headers base-devel dkms intel-ucode
-
 # Install ZSH
 pacman -S --noconfirm zsh
 
-echo -e "\e[32m\e[1mInstalled additional necessary packages.\e[m"
+echo -e "\e[32m\e[1mInstalled ZSH.\e[m"
 
 # Set time zone
 ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
@@ -63,7 +60,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\e[32m\e[1mInstalled GRUB.\e[m"
 
 # Adding a user
-useradd -m $USERNAME
+useradd -m -s /bin/zsh $USERNAME
 usermod -aG wheel,audio,video $USERNAME
 
 echo -e "\e[32m\e[1mAdded user: \"$USERNAME\".\e[m"
@@ -88,7 +85,7 @@ echo -e "\e[32m\e[1mInstalled network packages.\e[m"
 
 # Install Bluetooth Packages
 pacman -s --noconfirm bluez bluez-utils
-sudo systemctl enable bluetooth.service
+systemctl enable bluetooth.service
 
 echo -e "\e[32m\e[1mInstalled bluetooth packages.\e[m"
 
