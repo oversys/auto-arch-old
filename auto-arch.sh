@@ -13,10 +13,6 @@ passwordbox() {
 	whiptail --backtitle "Auto Arch" --title "$1" --passwordbox --nocancel "$2" 8 0
 }
 
-infobox() {
-	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 0 0
-}
-
 msgbox() {
 	whiptail --backtitle "Auto Arch" --title "$1" --msgbox "$2" 0 0
 }
