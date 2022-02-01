@@ -11,7 +11,7 @@ infobox() {
 
 # Update the System Clock
 infobox "System Clock" "Updating system clock..."
-timedatectl set-ntp true > /dev/null
+timedatectl set-ntp true &> /dev/null
 
 # Format Partitions
 infobox "Boot Partition" "Formatting boot partition ($BOOTDEV)..."
@@ -30,7 +30,7 @@ sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
 # Install System
 infobox "Base System" "Installing base system..."
-pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode > /dev/null
+pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode #> /dev/null
 
 # Generate fstab file
 infobox "fstab" "Generating fstab file..."
