@@ -51,6 +51,11 @@ BOOTDEV=$(whiptail --backtitle "Auto Arch" --title "Boot Partition" --menu --noc
 
 ROOTDEV=$(whiptail --backtitle "Auto Arch" --title "Root Partition" --menu --nocancel "Select root partition:" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
+if [ "$BOOTDEV" = "$ROOTDEV" ]; then
+	msgbox "Partitions" "Boot and Root partitions cannot be the same."
+	exit
+fi
+
 unset OPTIONS
 
 # Timezone
