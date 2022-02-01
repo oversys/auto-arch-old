@@ -30,7 +30,7 @@ sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
 # Install System
 infobox "Base System" "Installing base system..."
-pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode > /dev/null
+pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode libnewt > /dev/null
 
 # Generate fstab file
 infobox "fstab" "Generating fstab file..."
