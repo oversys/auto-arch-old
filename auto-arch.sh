@@ -126,9 +126,9 @@ bash pre-chroot.sh $BOOTDEV $ROOTDEV
 
 # Run the second script
 curl -Lso /mnt/chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/chroot.sh
-arch-chroot /mnt /bin/bash "chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PASSWORD $USER_PASSWORD $BOOTDEV"
+arch-chroot /mnt /bin/bash "./chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PASSWORD $USER_PASSWORD $BOOTDEV"
 
 # Run the third script
-curl -Lso /mnt/post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh
-arch-chroot /mnt /bin/bash -c "cd /home/$USERNAME; su -c \"bash post-install.sh\" $USERNAME -"
+curl -Lso /mnt/home/$USERNAME/post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh
+arch-chroot /mnt /bin/su -c "cd ~; bash post-install.sh" $USERNAME -
 msgbox "Finished Installation" "Arch Linux has successfully been installed on this machine."
