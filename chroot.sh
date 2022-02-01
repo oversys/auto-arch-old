@@ -52,15 +52,15 @@ echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
 # Get Necessary Boot Packages
 infobox "Boot Packages" "Installing boot packages..."
-pacman -Syu --noconfirm grub efibootmgr mtools os-prober dosfstools
+pacman -Syu --noconfirm grub efibootmgr mtools os-prober dosfstools > /dev/null
 
 # Install GRUB
 infobox "GRUB" "Installing GRUB..."
 mkdir /boot/EFI
 mount $BOOTDEV /boot/EFI
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck &> /dev/null
 sed -i "s/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
 
 # Adding a user
 infobox "User" "Adding user \"$USERNAME\"..."
