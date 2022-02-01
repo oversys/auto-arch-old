@@ -1,35 +1,39 @@
 #!/bin/bash
 
 # Parse Variables
-BOOT_PART=$1
-ROOT_PART=$2
+BOOTDEV=$1
+ROOTDEV=$2
+
+# Infobox Function
+infobox() {
+	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 0 0
+}
 
 # Update the System Clock
-timedatectl set-ntp true
-wait
-echo -e "\e[32m\e[1mUpdated the System Clock.\e[m"
+infobox "System Clock" "Updating system clock..."
+timedatectl set-ntp true > /dev/null
 
 # Format Partitions
-mkfs.fat -F32 /dev/$BOOT_PART
-echo -e "\e[32m\e[1mFormatted Boot Partition.\e[m"
-mkfs.ext4 /dev/$ROOT_PART
-echo -e "\e[32m\e[1mFormatted Root Partition.\e[m"
+infobox "Boot Partition" "Formatting boot partition ($BOOTDEV)..."
+mkfs.fat -F32 $BOOTDEV > /dev/null
+
+infobox "Root Partition" "Formatting root partition ($ROOTDEV)..."
+mkfs.ext4 $ROOTDEV > /dev/null
 
 # Mount root partition
-mount /dev/$ROOT_PART /mnt
-echo -e "\e[32m\e[1mMounted \"/dev/$ROOT_PART /mnt\".\e[m"
+infobox "Root Partition" "Mounting root partition ($ROOTDEV)..."
+mount $ROOTDEV /mnt
 
 # Enable parallel downloading
+infobox "Parallel Downloading" "Enabling parallel downloading in pacman..."
 sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 
 # Install System
-pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode
-echo -e "\e[32m\e[1mInstalled base system.\e[m"
+infobox "Base System" "Installing base system..."
+pacstrap /mnt base linux linux-firmware linux-headers base-devel dkms intel-ucode > /dev/null
 
 # Generate fstab file
+infobox "fstab" "Generating fstab file..."
 genfstab -U /mnt >> /mnt/etc/fstab
-echo -e "\e[32m\e[1mGenerated fstab file.\e[m"
 
-# Part One Done
-echo -e "\e[32m\e[1mPre-Chroot installation complete.\e[m"
 rm $0
