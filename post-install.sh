@@ -71,11 +71,21 @@ AUR_PKGS=(
 
 # Install packages
 infobox "Installing packages" "Installing ${#PKGS[@]} packages from the official Arch Linux repositories..."
-sudo pacman -Syu --noconfirm "${PKGS[@]}" > /dev/null
+sudo pacman -Syu --noconfirm "${PKGS[@]}" &> /dev/null
 
 # Install AMD GPU drivers
 infobox "Installing packages" "Installing ${#GPU_PKGS[@]} driver packages for AMD GPU..."
 sudo pacman -S --noconfirm "${GPU_PKGS[@]}" > /dev/null
+
+# Install AUR packages
+for aurpkg in "${AUR_PKGS[@]}"; do
+	infobox "AUR" "Installing \"$aurpkg\" from the Arch User Repository..."
+	git clone --quiet https://aur.archlinux.org/$aurpkg.git
+	cd $aurpkg
+	makepkg -si --noconfirm &> /dev/null
+	cd ..
+	rm -rf $aurpkg
+done
 
 # Install LightDM Aether theme
 infobox "LightDM" "Configuring and installing LightDM theme..."
@@ -110,6 +120,7 @@ infobox "Arabic Font" "Installing Arabic font..."
 wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip &> /dev/null
 unzip khebrat-musamim.zip > /dev/null
 rm khebrat-musamim.zip
+sudo mkdir -p /usr/share/fonts/TTF
 sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
 
 sudo mv $HOME/dotfiles/fonts.conf /etc/fonts/
@@ -126,16 +137,6 @@ sudo rm /boot/grub/themes/arch/arch.tar
 sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
 sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
-
-# Install AUR packages
-for aurpkg in $AUR_PKGS; do
-	infobox "AUR" "Installing \"$aurpkg\" from the Arch User Repository..."
-	git clone --quiet https://aur.archlinux.org/$aurpkg.git
-	cd $aurpkg
-	makepkg -si --noconfirm &> /dev/null
-	cd ..
-	rm -rf $aurpkg
-done
 
 # Download dotfiles
 infobox "Dotfiles" "Cloning dotfiles repository..."
