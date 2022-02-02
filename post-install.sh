@@ -138,6 +138,10 @@ sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
 sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
 
+# Change default shell
+infobox "Default Shell" "Changing default shell to ZSH..."
+sudo chsh -s /bin/zsh $USER
+
 # Download dotfiles
 infobox "Dotfiles" "Cloning dotfiles repository..."
 git clone --quiet https://github.com/BetaLost/dotfiles.git
