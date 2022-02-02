@@ -60,7 +60,7 @@ grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
 
 # Adding a user
 infobox "User" "Adding user \"$USERNAME\"..."
-useradd -m -s /bin/zsh $USERNAME
+useradd -m $USERNAME
 usermod -aG wheel,audio,video $USERNAME
 
 # Set Passwords
