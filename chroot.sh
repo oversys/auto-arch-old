@@ -26,10 +26,6 @@ sed -i "s/#ParallelDownloads/ParallelDownloads/g" /etc/pacman.conf
 infobox "Parallel Compilation" "Enabling parallel compilation ($(nproc) threads) in pacman..."
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/g" /etc/makepkg.conf
 
-# Install ZSH
-infobox "ZSH" "Installing the Z Shell..."
-pacman -S --noconfirm zsh > /dev/null
-
 # Set time zone
 infobox "Timezone" "Setting timezone to $REGION, $CITY..."
 ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
