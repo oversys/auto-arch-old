@@ -12,6 +12,7 @@ PKGS=(
 	"sxhkd" # Hotkey tool
 	"xorg-server" # Dependency of BSPWM
 	"light" # Manage brightness
+	"zsh" # Z Shell
 	"cifs-utils" # Mount Common Internet File System
 	"ntfs-3g" # Mount New Technology File System
 	"rofi" # Search tool
