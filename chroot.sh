@@ -11,7 +11,7 @@ BOOTDEV=$7
 
 # Infobox Function
 infobox() {
-	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 0 0
+	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 8 0
 }
 
 # Enable multilib
