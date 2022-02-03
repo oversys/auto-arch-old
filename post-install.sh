@@ -106,38 +106,6 @@ sudo systemctl enable lightdm.service > /dev/null
 
 # echo -e "\e[32m\e[1mFixed default user icon.\e[m"
 
-# Install cursor
-infobox "Cursor" "Installing cursor..."
-wget https://github.com/BetaLost/Arch-Install-Script/raw/main/macOSBigSur.tar.gz &> /dev/null
-tar -xf macOSBigSur.tar.gz
-sudo mv macOSBigSur /usr/share/icons/
-rm -rf macOSBigSur.tar.gz
-
-sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
-
-# Install Arabic font
-infobox "Arabic Font" "Installing Arabic font..."
-wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip &> /dev/null
-unzip khebrat-musamim.zip > /dev/null
-rm khebrat-musamim.zip
-sudo mkdir -p /usr/share/fonts/TTF
-sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
-
-sudo mv $HOME/dotfiles/fonts.conf /etc/fonts/
-sudo cp /etc/fonts/fonts.conf /etc/fonts/local.conf
-
-# Install GRUB theme
-infobox "GRUB Theme" "Installing GRUB theme..."
-wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar &> /dev/null
-sudo mkdir -p /boot/grub/themes
-sudo mkdir /boot/grub/themes/arch
-sudo mv arch.tar /boot/grub/themes/arch/
-sudo tar xf /boot/grub/themes/arch/arch.tar -C /boot/grub/themes/arch/
-sudo rm /boot/grub/themes/arch/arch.tar
-sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
-sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
-
 # Change default shell
 infobox "Default Shell" "Changing default shell to ZSH..."
 sudo chsh -s /bin/zsh $USER
@@ -194,5 +162,37 @@ sudo mv $HOME/dotfiles/polybar $HOME/.config/
 for script in $HOME/.config/polybar/scripts/*; do
     sudo chmod +x $script
 done
+
+# Install Arabic font
+infobox "Arabic Font" "Installing Arabic font..."
+wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip &> /dev/null
+unzip khebrat-musamim.zip > /dev/null
+rm khebrat-musamim.zip
+sudo mkdir -p /usr/share/fonts/TTF
+sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
+
+sudo mv $HOME/dotfiles/fonts.conf /etc/fonts/
+sudo cp /etc/fonts/fonts.conf /etc/fonts/local.conf
+
+# Install GRUB theme
+infobox "GRUB Theme" "Installing GRUB theme..."
+wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar &> /dev/null
+sudo mkdir -p /boot/grub/themes
+sudo mkdir /boot/grub/themes/arch
+sudo mv arch.tar /boot/grub/themes/arch/
+sudo tar xf /boot/grub/themes/arch/arch.tar -C /boot/grub/themes/arch/
+sudo rm /boot/grub/themes/arch/arch.tar
+sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
+sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
+
+# Install cursor
+infobox "Cursor" "Installing cursor..."
+wget https://github.com/BetaLost/Arch-Install-Script/raw/main/macOSBigSur.tar.gz &> /dev/null
+tar -xf macOSBigSur.tar.gz
+sudo mv macOSBigSur /usr/share/icons/
+rm -rf macOSBigSur.tar.gz
+
+sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
 
 rm -rf $HOME/dotfiles $0
