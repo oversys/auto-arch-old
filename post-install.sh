@@ -91,7 +91,7 @@ fastinstall() {
 
 slowinstall() {
 	for pkg in "${PKGS[@]}"; do
-		whiptail --backtitle "Auto Arch" --title "Installing packages" --infobox "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#PKGS[@]}" 10 0
+		infobox "Installing packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#PKGS[@]}"
 		sudo pacman -S --noconfirm $pkg &> /dev/null
 	done
 }
@@ -115,7 +115,7 @@ fastinstall() {
 
 slowinstall() {
 	for pkg in "${GPU_PKGS[@]}"; do
-		whiptail --backtitle "Auto Arch" --title "Installing packages (GPU)" --infobox "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#GPU_PKGS[@]}" 10 0
+		infobox "Installing packages (GPU)" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#GPU_PKGS[@]}"
 		sudo pacman -S --noconfirm $pkg &> /dev/null
 	done
 }
