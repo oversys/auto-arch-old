@@ -77,7 +77,7 @@ AUR_PKGS=(
 )
 
 # Install packages
-sudo pacman -Syy
+sudo pacman -Syy &> /dev/null
 
 getindex() {
 	for i in "${!PKGS[@]}"; do
