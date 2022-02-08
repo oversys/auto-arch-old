@@ -1,9 +1,14 @@
 #!/bin/bash
 
-# Infobox Function
+# Functions
 infobox() {
 	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 8 0
 }
+
+getdesc() { pacman -Si $1 | grep -Po '^Description\s*: \K.+'; }
+getsize() { pacman -Si $1 | grep -Po '^Installed Size\s*: \K.+'; }
+
+# Packages
 
 PKGS=(
 	"lightdm" # Display manager
@@ -70,12 +75,57 @@ AUR_PKGS=(
 )
 
 # Install packages
-infobox "Installing packages" "Installing ${#PKGS[@]} packages from the official Arch Linux repositories..."
-sudo pacman -Syu --noconfirm "${PKGS[@]}" &> /dev/null
+getindex() {
+	for i in "${!PKGS[@]}"; do
+		if [[ "${PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	done
+}
+
+fastinstall() {
+	infobox "Installing packages" "Installing ${#PKGS[@]} packages from the official Arch Linux repositories..."
+	sudo pacman -Syu --noconfirm "${PKGS[@]}" &> /dev/null
+}
+
+slowinstall() {
+	for pkg in "${PKGS[@]}"; do
+		whiptail --backtitle "Auto Arch" --title "Installing packages" --infobox "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#PKGS[@]}" 10 0
+		sudo pacman -S --noconfirm $pkg &> /dev/null
+	done
+}
+
+OPTIONS=(1 "Minimal Information (Fast)" 2 "Informative (Slow)")
+CHOICE=$(whiptail --backtitle "Auto Arch" --title "Installing packages" --menu --nocancel "Choose installation mode:" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+
+case $CHOICE in
+	1) fastinstall;;
+	2) slowinstall;;
+esac
 
 # Install AMD GPU drivers
-infobox "Installing packages" "Installing ${#GPU_PKGS[@]} driver packages for AMD GPU..."
-sudo pacman -S --noconfirm "${GPU_PKGS[@]}" > /dev/null
+getindex() {
+	for i in "${!GPU_PKGS[@]}"; do
+		if [[ "${GPU_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	done
+}
+
+fastinstall() {
+	infobox "Installing packages" "Installing ${#GPU_PKGS[@]} driver packages for AMD GPU..."
+	sudo pacman -S --noconfirm "${GPU_PKGS[@]}" > /dev/null
+}
+
+slowinstall() {
+	for pkg in "${GPU_PKGS[@]}"; do
+		whiptail --backtitle "Auto Arch" --title "Installing packages (GPU)" --infobox "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#GPU_PKGS[@]}" 10 0
+		sudo pacman -S --noconfirm $pkg > /dev/null
+	done
+}
+
+CHOICE=$(whiptail --backtitle "Auto Arch" --title "Installing packages" --menu --nocancel "Choose installation mode (GPU DRIVERS):" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+
+case $CHOICE in
+	1) fastinstall;;
+	2) slowinstall;;
+esac
 
 # Install AUR packages
 for aurpkg in "${AUR_PKGS[@]}"; do
