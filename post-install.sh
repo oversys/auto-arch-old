@@ -5,7 +5,7 @@ CHOICE=$1
 
 # Functions
 infobox() {
-	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 10 0
+	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 12 0
 }
 
 getdesc() { pacman -Si $1 | grep -Po '^Description\s*: \K.+'; }
