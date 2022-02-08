@@ -130,7 +130,7 @@ bash pre-chroot.sh $BOOTDEV $ROOTDEV $CHOICE
 
 # Run the second script
 curl -Lso /mnt/chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/chroot.sh
-arch-chroot /mnt /bin/bash chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PASSWORD $USER_PASSWORD $BOOTDEV
+arch-chroot /mnt /bin/bash chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PASSWORD $USER_PASSWORD $BOOTDEV $CHOICE
 
 # Run the third script
 curl -Lso /mnt/home/$USERNAME/post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh
