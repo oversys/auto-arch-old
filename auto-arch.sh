@@ -73,6 +73,10 @@ done
 
 CITY=$(whiptail --backtitle "Auto Arch" --title "Timezone" --menu --nocancel "Select City:" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
+# Install Mode
+OPTIONS=(1 "Minimal Information (Fast)" 2 "Informative (Slow)")
+CHOICE=$(whiptail --backtitle "Auto Arch" --title "Installing packages" --menu --nocancel "Choose installation mode:" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+
 # Hostname
 HOSTNAME=$(inputbox "Hostname" "Set hostname:" 3>&1 1>&2 2>&3)
 
@@ -130,5 +134,5 @@ arch-chroot /mnt /bin/bash chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PAS
 
 # Run the third script
 curl -Lso /mnt/home/$USERNAME/post-install.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/post-install.sh
-arch-chroot /mnt /bin/su -c "cd ~; bash post-install.sh" $USERNAME -
+arch-chroot /mnt /bin/su -c "cd ~; bash post-install.sh $CHOICE" $USERNAME -
 msgbox "Finished Installation" "Arch Linux has successfully been installed on this machine."
