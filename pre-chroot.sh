@@ -18,7 +18,7 @@ infobox "Boot Partition" "Formatting boot partition ($BOOTDEV)..."
 mkfs.fat -F32 $BOOTDEV > /dev/null
 
 infobox "Root Partition" "Formatting root partition ($ROOTDEV)..."
-mkfs.ext4 $ROOTDEV > /dev/null
+yes | mkfs.ext4 $ROOTDEV > /dev/null
 
 # Mount root partition
 infobox "Root Partition" "Mounting root partition ($ROOTDEV)..."
