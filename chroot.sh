@@ -8,11 +8,35 @@ USERNAME=$4
 ROOT_PASSWORD=$5
 USER_PASSWORD=$6
 BOOTDEV=$7
+CHOICE=$8
 
-# Infobox Function
+# Define Packages
+BOOT_PKGS=(
+	"grub"
+	"efibootmgr"
+	"mtools"
+	"os-prober"
+	"dosfstools"
+)
+
+NETWORK_PKGS=(
+	"networkmanager"
+	"iw"
+	"wpa_supplicant"
+)
+
+BLUETOOTH_PKGS=(
+	"bluez"
+	"bluez-utils"
+)
+
+# Functions
 infobox() {
-	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 8 0
+	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 12 0
 }
+
+getdesc() { pacman -Si $1 | grep -Po '^Description\s*: \K.+'; }
+getsize() { pacman -Si $1 | grep -Po '^Installed Size\s*: \K.+'; }
 
 # Enable multilib
 infobox "Multilib" "Enabling multilib (32 bit support) in pacman..."
@@ -47,8 +71,30 @@ echo "::1        localhost" >> /etc/hosts
 echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
 # Get Necessary Boot Packages
-infobox "Boot Packages" "Installing boot packages..."
-pacman -Syu --noconfirm grub efibootmgr mtools os-prober dosfstools > /dev/null
+sudo pacman -Syy
+
+getindex() {
+	for i in "${!BOOT_PKGS[@]}"; do
+		if [[ "${BOOT_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	done
+}
+
+fastinstall() {
+	infobox "Boot Packages" "Installing ${#BOOT_PKGS[@]} boot packages..."
+	pacman -S --noconfirm "${BOOT_PKGS[@]}" > /dev/null
+}
+
+slowinstall() {
+	for pkg in "${BOOT_PKGS[@]}"; do
+		infobox "Installing Boot Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#BOOT_PKGS[@]}"
+		pacman -S --noconfirm $pkg > /dev/null
+	done
+}
+
+case $CHOICE in
+	1) fastinstall;;
+	2) slowinstall;;
+esac
 
 # Install GRUB
 infobox "GRUB" "Installing GRUB..."
@@ -74,13 +120,57 @@ pacman -S --noconfirm sudo > /dev/null
 echo "$USERNAME  ALL=(ALL:ALL) NOPASSWD: ALL" | EDITOR="tee -a" visudo
 
 # Install Network Packages
-infobox "Network" "Installing network packages..."
-pacman -S --noconfirm networkmanager iw wpa_supplicant dialog > /dev/null
+getindex() {
+	for i in "${!NETWORK_PKGS[@]}"; do
+		if [[ "${NETWORK_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	done
+}
+
+fastinstall() {
+	infobox "Network Packages" "Installing ${#NETWORK_PKGS[@]} network packages..."
+	pacman -S --noconfirm "${NETWORK_PKGS[@]}" > /dev/null
+}
+
+slowinstall() {
+	for pkg in "${NETWORK_PKGS[@]}"; do
+		infobox "Installing Network Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#NETWORK_PKGS[@]}"
+		pacman -S --noconfirm $pkg > /dev/null
+	done
+}
+
+case $CHOICE in
+	1) fastinstall;;
+	2) slowinstall;;
+esac
+
+infobox "Network Service" "Enabling NetworkManager service..."
 systemctl enable NetworkManager.service > /dev/null
 
 # Install Bluetooth Packages
-infobox "Bluetooth" "Installing bluetooth packages..."
-pacman -s --noconfirm bluez bluez-utils > /dev/null
+getindex() {
+	for i in "${!BLUETOOTH_PKGS[@]}"; do
+		if [[ "${BLUETOOTH_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	done
+}
+
+fastinstall() {
+	infobox "Bluetooth Packages" "Installing ${#BLUETOOTH_PKGS[@]} bluetooth packages..."
+	pacman -S --noconfirm "${BLUETOOTH_PKGS[@]}" > /dev/null
+}
+
+slowinstall() {
+	for pkg in "${BLUETOOTH_PKGS[@]}"; do
+		infobox "Installing Bluetooth Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#BLUETOOTH_PKGS[@]}"
+		pacman -S --noconfirm $pkg > /dev/null
+	done
+}
+
+case $CHOICE in
+	1) fastinstall;;
+	2) slowinstall;;
+esac
+
+infobox "Bluetooth Service" "Enabling Bluetooth service..."
 systemctl enable bluetooth.service > /dev/null
 
 # Set permissions for brightness and mute button led
