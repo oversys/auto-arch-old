@@ -144,7 +144,7 @@ case $CHOICE in
 esac
 
 infobox "Network Service" "Enabling NetworkManager service..."
-systemctl enable NetworkManager.service > /dev/null
+systemctl enable NetworkManager.service &> /dev/null
 
 # Install Bluetooth Packages
 getindex() {
@@ -171,7 +171,7 @@ case $CHOICE in
 esac
 
 infobox "Bluetooth Service" "Enabling Bluetooth service..."
-systemctl enable bluetooth.service > /dev/null
+systemctl enable bluetooth.service &> /dev/null
 
 # Set permissions for brightness and mute button led
 infobox "Permissions" "Setting permissions for intel_backlight and mute button LED..."
