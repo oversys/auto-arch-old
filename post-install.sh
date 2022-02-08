@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Parse Variable
+CHOICE=$1
+
 # Functions
 infobox() {
-	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 8 0
+	whiptail --backtitle "Auto Arch" --title "$1" --infobox "$2" 10 0
 }
 
 getdesc() { pacman -Si $1 | grep -Po '^Description\s*: \K.+'; }
@@ -93,9 +96,6 @@ slowinstall() {
 	done
 }
 
-OPTIONS=(1 "Minimal Information (Fast)" 2 "Informative (Slow)")
-CHOICE=$(whiptail --backtitle "Auto Arch" --title "Installing packages" --menu --nocancel "Choose installation mode:" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
-
 case $CHOICE in
 	1) fastinstall;;
 	2) slowinstall;;
@@ -110,17 +110,15 @@ getindex() {
 
 fastinstall() {
 	infobox "Installing packages" "Installing ${#GPU_PKGS[@]} driver packages for AMD GPU..."
-	sudo pacman -S --noconfirm "${GPU_PKGS[@]}" > /dev/null
+	sudo pacman -S --noconfirm "${GPU_PKGS[@]}" &> /dev/null
 }
 
 slowinstall() {
 	for pkg in "${GPU_PKGS[@]}"; do
 		whiptail --backtitle "Auto Arch" --title "Installing packages (GPU)" --infobox "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#GPU_PKGS[@]}" 10 0
-		sudo pacman -S --noconfirm $pkg > /dev/null
+		sudo pacman -S --noconfirm $pkg &> /dev/null
 	done
 }
-
-CHOICE=$(whiptail --backtitle "Auto Arch" --title "Installing packages" --menu --nocancel "Choose installation mode (GPU DRIVERS):" 0 0 0 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 case $CHOICE in
 	1) fastinstall;;
