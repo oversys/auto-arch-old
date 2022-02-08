@@ -44,6 +44,8 @@ PKGS=(
 	"libnewt"
 )
 
+pacman -Syy &> /dev/null
+
 getindex() {
 	for i in "${!PKGS[@]}"; do
 		if [[ "${PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
