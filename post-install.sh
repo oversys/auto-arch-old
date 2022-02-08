@@ -11,8 +11,7 @@ infobox() {
 getdesc() { pacman -Si $1 | grep -Po '^Description\s*: \K.+'; }
 getsize() { pacman -Si $1 | grep -Po '^Installed Size\s*: \K.+'; }
 
-# Packages
-
+# Define Packages
 PKGS=(
 	"lightdm" # Display manager
 	"lightdm-webkit2-greeter" # LightDM theme
@@ -78,6 +77,8 @@ AUR_PKGS=(
 )
 
 # Install packages
+sudo pacman -Syy
+
 getindex() {
 	for i in "${!PKGS[@]}"; do
 		if [[ "${PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
@@ -86,7 +87,7 @@ getindex() {
 
 fastinstall() {
 	infobox "Installing packages" "Installing ${#PKGS[@]} packages from the official Arch Linux repositories..."
-	sudo pacman -Syu --noconfirm "${PKGS[@]}" &> /dev/null
+	sudo pacman -S --noconfirm "${PKGS[@]}" &> /dev/null
 }
 
 slowinstall() {
