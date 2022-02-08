@@ -126,7 +126,7 @@ esac
 
 # Run the first script
 curl -Lso pre-chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/pre-chroot.sh
-bash pre-chroot.sh $BOOTDEV $ROOTDEV
+bash pre-chroot.sh $BOOTDEV $ROOTDEV $CHOICE
 
 # Run the second script
 curl -Lso /mnt/chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/chroot.sh
