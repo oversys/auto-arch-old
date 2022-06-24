@@ -54,7 +54,7 @@ PKGS=(
 	"slop" # Polywins dependency
 )
 
-GPU_PKGS=(
+AMD_GPU_PKGS=(
 	"mesa"
 	"mesa-demos"
 	"lib32-mesa"
@@ -63,6 +63,16 @@ GPU_PKGS=(
 	"vulkan-icd-loader"
 	"lib32-vulkan-icd-loader"
 	"xf86-video-amdgpu"
+)
+
+NVIDIA_GPU_PKGS=(
+	"nvidia"
+	"nvidia-utils"
+	"nvidia-settings"
+	"nvidia-dkms"
+	"lib32-nvidia-utils"
+	"vulkan-icd-loader"
+	"lib32-vulkan-icd-loader"
 )
 
 AUR_PKGS=(
@@ -102,21 +112,21 @@ case $CHOICE in
 	2) slowinstall;;
 esac
 
-# Install AMD GPU drivers
+# Install GPU drivers - Change array name to NVIDIA_GPU_PKGS or AMD_GPU_PKGS depending on your hardware
 getindex() {
-	for i in "${!GPU_PKGS[@]}"; do
-		if [[ "${GPU_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
+	for i in "${!NVIDIA_GPU_PKGS[@]}"; do
+		if [[ "${NVIDIA_GPU_PKGS[i]}" = "$1" ]]; then echo $(expr $i + 1); fi
 	done
 }
 
 fastinstall() {
-	infobox "Installing packages" "Installing ${#GPU_PKGS[@]} driver packages for AMD GPU..."
-	sudo pacman -S --noconfirm "${GPU_PKGS[@]}" &> /dev/null
+	infobox "Installing packages" "Installing ${#NVIDIA_GPU_PKGS[@]} driver packages for NVIDIA GPU..."
+	sudo pacman -S --noconfirm "${NVIDIA_GPU_PKGS[@]}" &> /dev/null
 }
 
 slowinstall() {
-	for pkg in "${GPU_PKGS[@]}"; do
-		infobox "Installing packages (GPU)" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#GPU_PKGS[@]}"
+	for pkg in "${NVIDIA_GPU_PKGS[@]}"; do
+		infobox "Installing packages (GPU)" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#NVIDIA_GPU_PKGS[@]}"
 		sudo pacman -S --noconfirm $pkg &> /dev/null
 	done
 }
