@@ -76,7 +76,6 @@ NVIDIA_GPU_PKGS=(
 )
 
 AUR_PKGS=(
-	"rtl8821cu-morrownr-dkms-git" # RTL8821CU Network Adapter Driver
 	"nerd-fonts-jetbrains-mono" # JetBrains Mono Nerd Font
 	"ttf-poppins" # Poppins font
 	"picom-ibhagwan-git" # Picom compositor
