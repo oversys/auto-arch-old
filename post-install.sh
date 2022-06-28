@@ -139,10 +139,11 @@ esac
 for aurpkg in "${AUR_PKGS[@]}"; do
 	infobox "AUR" "Installing \"$aurpkg\" from the Arch User Repository..."
 	git clone --quiet https://aur.archlinux.org/$aurpkg.git
+        sudo chmod 777 $aurpkg
 	cd $aurpkg
 	makepkg -si --noconfirm &> /dev/null
 	cd ..
-	rm -rf $aurpkg
+	sudo rm -rf $aurpkg
 done
 
 # Install LightDM Aether theme
