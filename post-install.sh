@@ -17,7 +17,8 @@ PKGS=(
 	"lightdm-webkit2-greeter" # LightDM theme
 	"bspwm" # Tiling Window Manager
 	"sxhkd" # Hotkey tool
-	"xorg-server" # Dependency of BSPWM
+	"xorg" # Dependency of BSPWM
+	"xf86-video-intel" # Intel Video Driver
 	"light" # Manage brightness
 	"zsh" # Z Shell
 	"cifs-utils" # Mount Common Internet File System
