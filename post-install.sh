@@ -16,9 +16,17 @@ PKGS=(
 	"lightdm" # Display manager
 	"lightdm-webkit2-greeter" # LightDM theme
 	"bspwm" # Tiling Window Manager
-	"sxhkd" # Hotkey tool
-	"xorg" # Dependency of BSPWM
+	"sxhkd" # Hotkey Daemon
 	"xf86-video-intel" # Intel Video Driver
+	"xorg-server" # X System
+	"xorg-xinit" # X System
+	"xorg-xinput" # X System
+	"xorg-xkill" # X System
+	"xorg-xrandr" # X System
+	"xorg-xdpyinfo" # X System
+	"libwnck3" # X System
+	"mesa-utils" # X System
+	"hwdetect" # Load modules
 	"light" # Manage brightness
 	"zsh" # Z Shell
 	"cifs-utils" # Mount Common Internet File System
@@ -70,7 +78,6 @@ NVIDIA_GPU_PKGS=(
 	"nvidia"
 	"nvidia-utils"
 	"nvidia-settings"
-	"nvidia-dkms"
 	"lib32-nvidia-utils"
 	"vulkan-icd-loader"
 	"lib32-vulkan-icd-loader"
@@ -83,7 +90,6 @@ AUR_PKGS=(
 	"polybar" # Polybar
 	"brave-bin" # Brave Browser
 	"btop" # htop alternative
-	"nerdfetch" # System information tool
 )
 
 # Install packages
