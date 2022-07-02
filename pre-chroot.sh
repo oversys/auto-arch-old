@@ -42,6 +42,11 @@ PKGS=(
 	"dkms"
 	"intel-ucode"
 	"libnewt"
+	"hwdetect"
+	"hdparam"
+	"lsscsi"
+	"mtools"
+	"sg3_utils"
 )
 
 pacman -Syy &> /dev/null
