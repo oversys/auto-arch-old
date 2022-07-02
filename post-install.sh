@@ -26,7 +26,6 @@ PKGS=(
 	"xorg-xdpyinfo" # X System
 	"libwnck3" # X System
 	"mesa-utils" # X System
-	"hwdetect" # Load modules
 	"light" # Manage brightness
 	"zsh" # Z Shell
 	"cifs-utils" # Mount Common Internet File System
@@ -45,9 +44,13 @@ PKGS=(
 	"git" # Git
 	"man" # Manual
 	"github-cli" # Github CLI
-	"pulseaudio" # PulseAudio
-	"pulsemixer" # Manage audio
-	"alsa-utils" # Alsa utilities
+	"pulseaudio" # Audio Package
+	"pulsemixer" # Audio Package
+	"alsa-firmware" # Audio Package
+	"alsa-plugins" # Audio Package
+	"alsa-utils" # Audio Package
+	"rtkit" # Audio Package
+	"sof-firmware" # Audio Package
 	"pulseaudio-bluetooth" # Bluetooth headset capability
 	"zip" # Zip files
 	"unzip" # Unzip files
