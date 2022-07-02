@@ -21,8 +21,16 @@ BOOT_PKGS=(
 
 NETWORK_PKGS=(
 	"networkmanager"
-	"iw"
+	"dhclient"
+	"dnsmasq"
+	"dnsutils"
+	"ethtool"
+	"gnu-netcat"
+	"iwd"
+	"ndisc6"
+	"nss-mdns"
 	"wpa_supplicant"
+	"wireless_tools"
 )
 
 BLUETOOTH_PKGS=(
