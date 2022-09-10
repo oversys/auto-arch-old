@@ -203,7 +203,7 @@ mv $HOME/dotfiles/.bashrc $HOME/
 
 # Configure VIM
 infobox "Dotfiles" "Configuring VIM..."
-curl -fLso ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLso $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/.vimrc $HOME/
 
 # Configure Rofi
@@ -228,7 +228,7 @@ done
 
 # Install Arabic font
 infobox "Arabic Font" "Installing Arabic font..."
-wget https://github.com/BetaLost/Arch-Install-Script/raw/main/khebrat-musamim.zip &> /dev/null
+wget https://github.com/BetaLost/auto-arch/raw/main/khebrat-musamim.zip &> /dev/null
 unzip khebrat-musamim.zip > /dev/null
 rm khebrat-musamim.zip
 sudo mkdir -p /usr/share/fonts/TTF
@@ -251,7 +251,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
 
 # Install cursor
 infobox "Cursor" "Installing cursor..."
-wget https://github.com/BetaLost/Arch-Install-Script/raw/main/macOSBigSur.tar.gz &> /dev/null
+wget https://github.com/BetaLost/auto-arch/raw/main/macOSBigSur.tar.gz &> /dev/null
 tar -xf macOSBigSur.tar.gz
 sudo mv macOSBigSur /usr/share/icons/
 rm -rf macOSBigSur.tar.gz
