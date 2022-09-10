@@ -15,14 +15,14 @@ getsize() { pacman -Si $1 | grep -Po '^Installed Size\s*: \K.+'; }
 
 # Update the System Clock
 infobox "System Clock" "Updating system clock..."
-timedatectl set-ntp true &> /dev/null
+timedatectl set-ntp true &>> log.txt
 
 # Format Partitions
 infobox "Boot Partition" "Formatting boot partition ($BOOTDEV)..."
-mkfs.fat -F32 $BOOTDEV > /dev/null
+mkfs.fat -F32 $BOOTDEV &>> log.txt
 
 infobox "Root Partition" "Formatting root partition ($ROOTDEV)..."
-yes | mkfs.ext4 $ROOTDEV > /dev/null
+yes | mkfs.ext4 $ROOTDEV &>> log.txt
 
 # Mount root partition
 infobox "Root Partition" "Mounting root partition ($ROOTDEV)..."
@@ -48,7 +48,7 @@ PKGS=(
 	"sg3_utils"
 )
 
-pacman -Syy &> /dev/null
+pacman -Syy &>> log.txt
 
 getindex() {
 	for i in "${!PKGS[@]}"; do
@@ -58,13 +58,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Base System" "Installing base system..."
-	pacstrap /mnt "${PKGS[@]}" > /dev/null
+	pacstrap /mnt "${PKGS[@]}" &>> log.txt
 }
 
 slowinstall() {
 	for pkg in "${PKGS[@]}"; do
 		infobox "Base System Installation" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#PKGS[@]}"
-		pacstrap /mnt $pkg > /dev/null
+		pacstrap /mnt $pkg &>> log.txt
 	done
 }
 
@@ -75,6 +75,6 @@ esac
 
 # Generate fstab file
 infobox "fstab" "Generating fstab file..."
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt &>> log.txt
 
 rm $0
