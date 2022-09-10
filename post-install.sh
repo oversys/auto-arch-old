@@ -216,10 +216,6 @@ sudo mv $HOME/dotfiles/rofi $HOME/.config/
 infobox "Dotfiles" "Configuring the Kitty terminal emulator..."
 sudo mv $HOME/dotfiles/kitty $HOME/.config/
 
-# Configure Alacritty
-# infobox "Dotfiles" "Configuring the Alacritty terminal emulator..."
-# sudo mv $HOME/dotfiles/alacritty $HOME/.config/
-
 # Configure Picom 
 infobox "Dotfiles" "Configuring Picom..."
 sudo mv $HOME/dotfiles/picom $HOME/.config/
