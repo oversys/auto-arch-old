@@ -25,7 +25,10 @@ PKGS=(
 	"xorg-xrandr" # X System
 	"xorg-xdpyinfo" # X System
 	"libwnck3" # X System
-	"mesa-utils" # X System
+	"mesa" # Mesa
+	"lib32-mesa" # 32-bit Mesa
+	"mesa-demos" # Mesa Demos
+	"mesa-utils" # Mesa Utils
 	"light" # Manage brightness
 	"zsh" # Z Shell
 	"cifs-utils" # Mount Common Internet File System
@@ -68,9 +71,6 @@ PKGS=(
 )
 
 AMD_GPU_PKGS=(
-	"mesa"
-	"mesa-demos"
-	"lib32-mesa"
 	"vulkan-radeon"
 	"lib32-vulkan-radeon"
 	"vulkan-icd-loader"
@@ -93,7 +93,6 @@ AUR_PKGS=(
 	"picom-ibhagwan-git" # Picom compositor
 	"polybar" # Polybar
 	"brave-bin" # Brave Browser
-	"btop" # htop alternative
 )
 
 # Install packages
@@ -160,17 +159,15 @@ done
 # Install LightDM Aether theme
 infobox "LightDM" "Configuring and installing LightDM theme..."
 git clone https://github.com/NoiSek/Aether.git &>> /log.txt
-sudo mv Aether /usr/share/lightdm-webkit/themes/
-sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = Aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+sudo mv Aether /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
+sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
 sudo sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g" /etc/lightdm/lightdm.conf
 sudo sed -i "s/#user-session=default/user-session=bspwm/g" /etc/lightdm/lightdm.conf
 sudo systemctl enable lightdm.service &>> /log.txt
 
 # Fix default user icon
-# sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
+# sudo cp /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
 # sudo sed -i "s/Icon=\/home\/$USER\/.face/Icon=\/var\/lib\/AccountsService\/icons\/$USER/g" /var/lib/AccountsService/users/$USER
-
-# echo -e "\e[32m\e[1mFixed default user icon.\e[m"
 
 # Change default shell
 infobox "Default Shell" "Changing default shell to ZSH..."
