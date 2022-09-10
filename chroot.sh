@@ -79,7 +79,7 @@ echo "::1        localhost" >> /etc/hosts
 echo "127.0.1.1  $HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
 # Get Necessary Boot Packages
-sudo pacman -Syy
+pacman -Syy &>> log.txt
 
 getindex() {
 	for i in "${!BOOT_PKGS[@]}"; do
@@ -89,13 +89,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Boot Packages" "Installing ${#BOOT_PKGS[@]} boot packages..."
-	pacman -S --noconfirm "${BOOT_PKGS[@]}" > /dev/null
+	pacman -S --noconfirm "${BOOT_PKGS[@]}" &>> log.txt
 }
 
 slowinstall() {
 	for pkg in "${BOOT_PKGS[@]}"; do
 		infobox "Installing Boot Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#BOOT_PKGS[@]}"
-		pacman -S --noconfirm $pkg > /dev/null
+		pacman -S --noconfirm $pkg &>> log.txt
 	done
 }
 
@@ -108,9 +108,9 @@ esac
 infobox "GRUB" "Installing GRUB..."
 mkdir /boot/EFI
 mount $BOOTDEV /boot/EFI
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck &> /dev/null
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/EFI --recheck &>> log.txt
 sed -i "s/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
+grub-mkconfig -o /boot/grub/grub.cfg &>> log.txt
 
 # Adding a user
 infobox "User" "Adding user \"$USERNAME\"..."
@@ -124,7 +124,7 @@ printf "$USER_PASSWORD\n$USER_PASSWORD" | passwd $USERNAME
 
 # Configure Sudo
 infobox "Sudo" "Configuring sudo..."
-pacman -S --noconfirm sudo > /dev/null
+pacman -S --noconfirm sudo &>> log.txt
 echo "$USERNAME  ALL=(ALL:ALL) NOPASSWD: ALL" | EDITOR="tee -a" visudo
 
 # Install Network Packages
@@ -136,13 +136,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Network Packages" "Installing ${#NETWORK_PKGS[@]} network packages..."
-	pacman -S --noconfirm "${NETWORK_PKGS[@]}" > /dev/null
+	pacman -S --noconfirm "${NETWORK_PKGS[@]}" &>> log.txt
 }
 
 slowinstall() {
 	for pkg in "${NETWORK_PKGS[@]}"; do
 		infobox "Installing Network Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#NETWORK_PKGS[@]}"
-		pacman -S --noconfirm $pkg > /dev/null
+		pacman -S --noconfirm $pkg &>> log.txt
 	done
 }
 
@@ -152,7 +152,7 @@ case $CHOICE in
 esac
 
 infobox "Network Service" "Enabling NetworkManager service..."
-systemctl enable NetworkManager.service &> /dev/null
+systemctl enable NetworkManager.service &>> log.txt
 
 # Install Bluetooth Packages
 getindex() {
@@ -163,13 +163,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Bluetooth Packages" "Installing ${#BLUETOOTH_PKGS[@]} bluetooth packages..."
-	pacman -S --noconfirm "${BLUETOOTH_PKGS[@]}" > /dev/null
+	pacman -S --noconfirm "${BLUETOOTH_PKGS[@]}" &>> log.txt
 }
 
 slowinstall() {
 	for pkg in "${BLUETOOTH_PKGS[@]}"; do
 		infobox "Installing Bluetooth Packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#BLUETOOTH_PKGS[@]}"
-		pacman -S --noconfirm $pkg > /dev/null
+		pacman -S --noconfirm $pkg &>> log.txt
 	done
 }
 
@@ -179,11 +179,11 @@ case $CHOICE in
 esac
 
 infobox "Bluetooth Service" "Enabling Bluetooth service..."
-systemctl enable bluetooth.service &> /dev/null
+systemctl enable bluetooth.service &>> log.txt
 
 # Set permissions for brightness and mute button led
-infobox "Permissions" "Setting permissions for intel_backlight and mute button LED..."
-chmod a+rw /sys/class/backlight/intel_backlight/brightness > /dev/null
-chmod a+rw /sys/class/leds/hda\:\:mute/brightness > /dev/null
+infobox "Permissions" "Setting permissions for intel_backlight..."
+chmod a+rw /sys/class/backlight/intel_backlight/brightness &>> log.txt
+# chmod a+rw /sys/class/leds/hda\:\:mute/brightness > /dev/null
 
 rm $0
