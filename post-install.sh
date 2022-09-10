@@ -254,7 +254,7 @@ infobox "Cursor" "Installing cursor..."
 wget https://github.com/BetaLost/auto-arch/raw/main/macOSBigSur.tar.gz &> /dev/null
 tar -xf macOSBigSur.tar.gz
 sudo mv macOSBigSur /usr/share/icons/
-rm -rf macOSBigSur.tar.gz
+rm macOSBigSur.tar.gz
 
 sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
 
