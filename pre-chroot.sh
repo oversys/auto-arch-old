@@ -43,7 +43,6 @@ PKGS=(
 	"intel-ucode"
 	"libnewt"
 	"hwdetect"
-	"hdparam"
 	"lsscsi"
 	"mtools"
 	"sg3_utils"
