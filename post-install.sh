@@ -97,7 +97,7 @@ AUR_PKGS=(
 )
 
 # Install packages
-sudo pacman -Syy &> /dev/null
+sudo pacman -Syy &>> /log.txt
 
 getindex() {
 	for i in "${!PKGS[@]}"; do
@@ -107,13 +107,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Installing packages" "Installing ${#PKGS[@]} packages from the official Arch Linux repositories..."
-	sudo pacman -S --noconfirm "${PKGS[@]}" &> /dev/null
+	sudo pacman -S --noconfirm "${PKGS[@]}" &>> /log.txt
 }
 
 slowinstall() {
 	for pkg in "${PKGS[@]}"; do
 		infobox "Installing packages" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#PKGS[@]}"
-		sudo pacman -S --noconfirm $pkg &> /dev/null
+		sudo pacman -S --noconfirm $pkg &>> /log.txt
 	done
 }
 
@@ -131,13 +131,13 @@ getindex() {
 
 fastinstall() {
 	infobox "Installing packages" "Installing ${#NVIDIA_GPU_PKGS[@]} driver packages for NVIDIA GPU..."
-	sudo pacman -S --noconfirm "${NVIDIA_GPU_PKGS[@]}" &> /dev/null
+	sudo pacman -S --noconfirm "${NVIDIA_GPU_PKGS[@]}" &>> /log.txt
 }
 
 slowinstall() {
 	for pkg in "${NVIDIA_GPU_PKGS[@]}"; do
 		infobox "Installing packages (GPU)" "Name: $pkg\nDescription: $(getdesc $pkg)\nSize: $(getsize $pkg)\n$(getindex $pkg) out of ${#NVIDIA_GPU_PKGS[@]}"
-		sudo pacman -S --noconfirm $pkg &> /dev/null
+		sudo pacman -S --noconfirm $pkg &>> /log.txt
 	done
 }
 
@@ -149,23 +149,22 @@ esac
 # Install AUR packages
 for aurpkg in "${AUR_PKGS[@]}"; do
 	infobox "AUR" "Installing \"$aurpkg\" from the Arch User Repository..."
-	git clone --quiet https://aur.archlinux.org/$aurpkg.git
+	git clone https://aur.archlinux.org/$aurpkg.git &>> /log.txt
         sudo chmod 777 $aurpkg
 	cd $aurpkg
-	makepkg -si --noconfirm &> /dev/null
+	makepkg -si --noconfirm &>> /log.txt
 	cd ..
 	sudo rm -rf $aurpkg
 done
 
 # Install LightDM Aether theme
 infobox "LightDM" "Configuring and installing LightDM theme..."
-git clone --quiet https://github.com/NoiSek/Aether.git
-sudo cp --recursive Aether /usr/share/lightdm-webkit/themes/
-rm -rf Aether
+git clone https://github.com/NoiSek/Aether.git &>> /log.txt
+sudo mv Aether /usr/share/lightdm-webkit/themes/
 sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = Aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
 sudo sed -i "s/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g" /etc/lightdm/lightdm.conf
 sudo sed -i "s/#user-session=default/user-session=bspwm/g" /etc/lightdm/lightdm.conf
-sudo systemctl enable lightdm.service > /dev/null
+sudo systemctl enable lightdm.service &>> /log.txt
 
 # Fix default user icon
 # sudo cp /usr/share/lightdm-webkit/themes/Aether/src/img/default-user.png /var/lib/AccountsService/icons/$USER
@@ -175,11 +174,11 @@ sudo systemctl enable lightdm.service > /dev/null
 
 # Change default shell
 infobox "Default Shell" "Changing default shell to ZSH..."
-sudo chsh -s /bin/zsh $USER
+sudo chsh -s /bin/zsh $USER &>> /log.txt
 
 # Download dotfiles
 infobox "Dotfiles" "Cloning dotfiles repository..."
-git clone --quiet https://github.com/BetaLost/dotfiles.git
+git clone https://github.com/BetaLost/dotfiles.git &>> /log.txt
 mkdir -p $HOME/.config
 
 # Configure BSPWM and SXHKD
@@ -193,8 +192,8 @@ find $HOME/.config/sxhkd -type f -exec chmod +x {} \;
 
 # Configure ZSH
 infobox "Dotfiles" "Configuring the Z Shell (ZSH)..."
-git clone --quiet https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
-git clone --quiet https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions &>> /log.txt
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting &>> /log.txt
 mv $HOME/dotfiles/.zshrc $HOME/
 
 # Configure BASH
@@ -228,8 +227,8 @@ done
 
 # Install Arabic font
 infobox "Arabic Font" "Installing Arabic font..."
-wget https://github.com/BetaLost/auto-arch/raw/main/khebrat-musamim.zip &> /dev/null
-unzip khebrat-musamim.zip > /dev/null
+wget https://github.com/BetaLost/auto-arch/raw/main/khebrat-musamim.zip &>> /log.txt
+unzip khebrat-musamim.zip &>> /log.txt
 rm khebrat-musamim.zip
 sudo mkdir -p /usr/share/fonts/TTF
 sudo mv "18 Khebrat Musamim Regular.ttf" /usr/share/fonts/TTF/
@@ -239,7 +238,7 @@ sudo cp /etc/fonts/fonts.conf /etc/fonts/local.conf
 
 # Install GRUB theme
 infobox "GRUB Theme" "Installing GRUB theme..."
-wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar &> /dev/null
+wget https://github.com/BetaLost/auto-arch/raw/main/arch.tar &>> /log.txt
 sudo mkdir -p /boot/grub/themes
 sudo mkdir /boot/grub/themes/arch
 sudo mv arch.tar /boot/grub/themes/arch/
@@ -247,14 +246,14 @@ sudo tar xf /boot/grub/themes/arch/arch.tar -C /boot/grub/themes/arch/
 sudo rm /boot/grub/themes/arch/arch.tar
 sudo sed -i "s/GRUB_GFXMODE=auto/GRUB_GFXMODE=1920x1080/g" /etc/default/grub
 sudo sed -i "s/#GRUB_THEME=.*/GRUB_THEME=\"\/boot\/grub\/themes\/arch\/theme.txt\"/g" /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
+sudo grub-mkconfig -o /boot/grub/grub.cfg &>> /log.txt
 
 # Install cursor
 infobox "Cursor" "Installing cursor..."
-wget https://github.com/BetaLost/auto-arch/raw/main/macOSBigSur.tar.gz &> /dev/null
+wget https://github.com/BetaLost/auto-arch/raw/main/macOSBigSur.tar.gz &>> /log.txt
 tar -xf macOSBigSur.tar.gz
-sudo mv macOSBigSur /usr/share/icons/
 rm macOSBigSur.tar.gz
+sudo mv macOSBigSur /usr/share/icons/
 
 sudo sed -i "s/Inherits=Adwaita/Inherits=macOSBigSur/g" /usr/share/icons/default/index.theme
 
