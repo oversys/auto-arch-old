@@ -44,6 +44,7 @@ PKGS=(
 	"git" # Git
 	"man" # Manual
 	"github-cli" # Github CLI
+	"dunst" # Notifications
 	"pulseaudio" # Audio Package
 	"pulsemixer" # Audio Package
 	"alsa-firmware" # Audio Package
