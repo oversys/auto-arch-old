@@ -128,6 +128,10 @@ esac
 curl -Lso pre-chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/pre-chroot.sh
 bash pre-chroot.sh $BOOTDEV $ROOTDEV $CHOICE
 
+# Manage logs
+mv log.txt log_pre_chroot.txt
+cp log_pre_chroot.txt /mnt/log.txt
+
 # Run the second script
 curl -Lso /mnt/chroot.sh https://raw.githubusercontent.com/BetaLost/auto-arch/main/chroot.sh
 arch-chroot /mnt /bin/bash chroot.sh $REGION $CITY $HOSTNAME $USERNAME $ROOT_PASSWORD $USER_PASSWORD $BOOTDEV $CHOICE
