@@ -36,10 +36,10 @@ PKGS=(
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
 	"kitty" # Terminal Emulator
-	"vim" # Editor
-	"nodejs" # CoC.nvim dependency
-	"npm" # CoC.nvim dependency
-	"clang" # coc-clangd dependency
+	"vim" # Text Editor
+	"nodejs" # YouCompleteMe JavaScript/TypeScript dependency
+	"npm" # YouCompleteMe JavaScript/TypeScript dependency
+	"clang" # YouCompleteMe C-family dependency
 	"htop" # System monitor
 	"exa" # ls alternative
 	"bat" # cat alternative
@@ -201,6 +201,8 @@ mv $HOME/dotfiles/.bashrc $HOME/
 infobox "Dotfiles" "Configuring VIM..."
 curl -fLso $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/.vimrc $HOME/
+vim -c "PlugInstall | q | q"
+$HOME/.vim/plugged/YouCompleteMe/install.py --clangd-completer --ts-completer --rust-completer
 
 # Configure Rofi
 infobox "Dotfiles" "Configuring Rofi..."
