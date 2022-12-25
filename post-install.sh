@@ -36,10 +36,13 @@ PKGS=(
 	"rofi" # Search tool
 	"flameshot" # Screenshot tool
 	"kitty" # Terminal Emulator
-	"vim" # Text Editor
-	"nodejs" # YouCompleteMe JavaScript/TypeScript dependency
-	"npm" # YouCompleteMe JavaScript/TypeScript dependency
-	"clang" # YouCompleteMe C-family dependency
+	"neovim" # Text Editor
+	"nodejs" # TSServer dependency
+	"npm" # TSServer dependency
+	"typescript-language-server" # TS/JS Server
+	"rust-analyzer" # Rust Language Server
+	"clang" # C-Family Language Server
+	"pyright" # Python Language Server
 	"htop" # System monitor
 	"exa" # ls alternative
 	"bat" # cat alternative
@@ -198,11 +201,17 @@ infobox "Dotfiles" "Configuring the Bourne Again Shell (BASH)..."
 mv $HOME/dotfiles/.bashrc $HOME/
 
 # Configure VIM
-infobox "Dotfiles" "Configuring VIM..."
-curl -fLso $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mv $HOME/dotfiles/.vimrc $HOME/
-vim -c "PlugInstall | q | q"
-$HOME/.vim/plugged/YouCompleteMe/install.py --clangd-completer --ts-completer --rust-completer
+#infobox "Dotfiles" "Configuring VIM..."
+#curl -fLso $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#mv $HOME/dotfiles/.vimrc $HOME/
+#vim -c "PlugInstall | q | q"
+#$HOME/.vim/plugged/YouCompleteMe/install.py --clangd-completer --ts-completer --rust-completer
+
+# Configure Neovim
+infobox "Dotfiles" "Configuring Neovim..."
+curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mv $HOME/dotfiles/nvim $HOME/.config/
+nvim -c "PlugInstall | q | q"
 
 # Configure Rofi
 infobox "Dotfiles" "Configuring Rofi..."
