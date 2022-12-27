@@ -212,6 +212,7 @@ infobox "Dotfiles" "Configuring Neovim..."
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mv $HOME/dotfiles/nvim $HOME/.config/
 nvim -c "PlugInstall | q | q"
+sed -i "s/background = '#282923'/background = '#1a1a18'/g" $HOME/.local/share/nvim/plugged/ofirkai.nvim/lua/ofirkai/design.lua
 
 # Configure Rofi
 infobox "Dotfiles" "Configuring Rofi..."
