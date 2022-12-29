@@ -43,6 +43,7 @@ PKGS=(
 	"rust-analyzer" # Rust Language Server
 	"clang" # C-Family Language Server
 	"pyright" # Python Language Server
+	"lua-language-server" # Lua Language Server
 	"htop" # System monitor
 	"exa" # ls alternative
 	"bat" # cat alternative
